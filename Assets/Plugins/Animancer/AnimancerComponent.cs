@@ -716,5 +716,13 @@ namespace Animancer
         /************************************************************************************************************************/
         #endregion
         /************************************************************************************************************************/
+        
+        public static AnimancerComponent GetCurrent() => Get(AnimancerEvent.CurrentState);
+
+        /// <summary>Returns the <see cref="AnimancerComponent"/> associated with the `node`.</summary>
+        public static AnimancerComponent Get(AnimancerNode node) => Get(node.Root);
+
+        /// <summary>Returns the <see cref="AnimancerComponent"/> associated with the `animancer`.</summary>
+        public static AnimancerComponent Get(AnimancerPlayable animancer) => animancer.Component as AnimancerComponent;
     }
 }
