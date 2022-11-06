@@ -11,11 +11,14 @@ public class CharacterController2D : MonoBehaviour
 
     public Rigidbody2D r2d { get; private set; }
     private CapsuleCollider2D mainCollider;
+    [SerializeField] private SpriteRenderer sprite;
     
     public static event Action<bool> OnGroundedChanged;
     
     public static readonly float GRAVITY_SCALE = 3f; // static for now
     public bool isGrounded { get; protected set; }
+    public bool facingRight { get; protected set; }
+
 
     protected virtual void Awake()
     {
@@ -32,18 +35,28 @@ public class CharacterController2D : MonoBehaviour
 
     protected virtual void Update()
     {
-        FlipFacing();
     }
 
     protected virtual void FixedUpdate()
     {
         UpdateIsGrounded();
+        FlipFacing();
     }
     
-    protected virtual void FlipFacing() // TODO with AIcontroller
+    protected virtual void FlipFacing()
     {
         if (!characterStateMachine.CurrentState.CanTurn)
             return;
+        
+        // Change facing direction
+        float xVel = r2d.velocity.x;
+        if ((xVel > 0 && !facingRight) || (xVel < 0 && facingRight))
+        {
+            facingRight = !facingRight;
+            Transform transf = sprite.transform;
+            transf.RotateAround(transf.position, transf.up, 180f);
+            //transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
 
     protected void UpdateIsGrounded()

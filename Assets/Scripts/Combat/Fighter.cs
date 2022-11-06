@@ -12,13 +12,14 @@ public partial class Fighter : MonoBehaviour
     [SerializeField] protected bool isHittable = true;
     [SerializeField] protected Animator animator;
     [SerializeField] protected SpriteRenderer sprite;
+    [SerializeField] protected CharacterController2D controller;
     protected Transform curTarget; // TODO
     
     [HideInInspector] public float curHealth { get; protected set; }
     [HideInInspector] public bool inCombat { get; protected set; } // TODO: change to false (player vs enemy
     [HideInInspector] public float lastHitTime { get; protected set; }
     
-    public delegate void OnHealthChange(float newHealth, float totalHealth);
+    public delegate void OnHealthChange(Fighter fighter, float newHealth, float totalHealth);
     public static OnHealthChange HealthChangeEvent;
     
     protected virtual void Awake()
@@ -35,6 +36,11 @@ public partial class Fighter : MonoBehaviour
         if (!sprite)
         {
             sprite = GetComponentInChildren<SpriteRenderer>();
+        }
+
+        if (!controller)
+        {
+            controller = GetComponent<CharacterController2D>();
         }
     }
     
@@ -65,7 +71,7 @@ public partial class Fighter : MonoBehaviour
         
         curHealth -= damageAmount;
         Mathf.Clamp(curHealth, 0, stats.maxHealth);
-        HealthChangeEvent.Invoke(curHealth, stats.maxHealth);
+        HealthChangeEvent.Invoke(this, curHealth, stats.maxHealth);
         
         if (animator)
         {

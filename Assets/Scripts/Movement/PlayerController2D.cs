@@ -12,9 +12,7 @@ public class PlayerController2D : CharacterController2D
 {
     // Move player in 2D space
     public Vector2 speed = new Vector2(250f, 200f);
-
-    private bool facingRight = true;
-
+    
     private float _moveDirection = 0;
     public Vector2 _movementInput { get; private set; }
     
@@ -51,30 +49,10 @@ public class PlayerController2D : CharacterController2D
         _moveDirection = value.x;
     }
 
-    protected override void FlipFacing()
-    {
-        base.FlipFacing();
-        
-        // Change facing direction
-        if (_moveDirection != 0)
-        {
-            if (_moveDirection > 0 && !facingRight)
-            {
-                facingRight = true;
-                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            }
-            else if (_moveDirection < 0 && facingRight)
-            {
-                facingRight = false;
-                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            }
-        } 
-    }
-    
     protected override void FixedUpdate()
     {
-        base.FixedUpdate();
-
         r2d.velocity = _movementInput * speed * Time.fixedDeltaTime;
+        
+        base.FixedUpdate();
     }
 }

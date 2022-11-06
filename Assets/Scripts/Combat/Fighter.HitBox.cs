@@ -15,7 +15,7 @@ public partial class Fighter : MonoBehaviour
 
     private ObjectPooling<HitBox> hitboxPool;
     private Dictionary<HitData, HitBox> _ActiveHits;
-    //private HashSet<Hit.ITarget> _IgnoreHits;
+    private HashSet<Fighter> _FightersToIgnore;
 
     /************************************************************************************************************************/
 
@@ -29,16 +29,9 @@ public partial class Fighter : MonoBehaviour
 
     public void AddHitBox(HitData data)
     {
-        //if (_IgnoreHits == null)
-        {
-            //ObjectPool.Acquire(out _ActiveHits);
-            //ObjectPool.Acquire(out _IgnoreHits);
-        }
-
-        // TODO: next up: fix hit triggers for non "Character"s
-        HitBox hitBox = hitboxPool.ObtainObject(null, transform);
-
-        hitBox.Activate(data, sprite.flipX);
+        HitBox hitBox = hitboxPool.ObtainObject(sprite.transform);
+        
+        hitBox.Activate(data, this, _FightersToIgnore, controller.facingRight);
         _ActiveHits.Add(data, hitBox);
     }
 
@@ -58,7 +51,7 @@ public partial class Fighter : MonoBehaviour
     /// </summary>
     public void EndHitSequence()
     {
-        //if (_IgnoreHits == null)   BIGGGGGG TODO
+        //if (_FightersToIgnore == null)
         //    return;
 
         ClearHitBoxes();

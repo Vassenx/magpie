@@ -125,6 +125,7 @@ namespace PlatformerGameKit
 
             events.OnEnd += () =>
             {
+                // TODO: get component expensive here
                 AnimancerComponent attacker = AnimancerComponent.GetCurrent();
                 Fighter attackerFighter = attacker.GetComponentInParent<Fighter>();
                 if (attackerFighter != null)

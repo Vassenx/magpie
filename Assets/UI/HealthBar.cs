@@ -13,10 +13,12 @@ public class HealthBar : MonoBehaviour
         slider.minValue = 0;
     }
 
-    private void OnHealthChange(float newHealth, float totalHealth)
+    private void OnHealthChange(Fighter fighter, float newHealth, float totalHealth)
     {
-        slider.maxValue = totalHealth;
-        slider.normalizedValue = newHealth;
+        if (fighter.transform != transform.parent.parent)
+            return;
+        
+        slider.value = (newHealth/totalHealth);
     }
     
     private void OnEnable() => Fighter.HealthChangeEvent += OnHealthChange;

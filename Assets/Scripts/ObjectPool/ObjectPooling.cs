@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class ObjectPooling<TObject> : IDisposable where TObject : MonoBehaviour // TObject is a component, but will pool its whole object
@@ -18,27 +19,24 @@ public class ObjectPooling<TObject> : IDisposable where TObject : MonoBehaviour 
         IncreaseSize(initialCount);
     }
     
-    public TObject ObtainObject(Transform transf, Transform parent = null)
+    public TObject ObtainObject(Transform parent = null)
     {
         TObject obj = PopObject();
         if (obj != default)
         {
-            if(!obj.isActiveAndEnabled)
-            {
-                obj.gameObject.SetActive(true);
-            }
-
-            Transform objTransf = obj.transform;
             if (parent != null)
             {
-                objTransf.SetParent(parent);
+                obj.gameObject.SetActive(false);
+                var objTransform = obj.transform;
+                
+                objTransform.SetParent(parent);
+                
+                // otherwise won't take on the parent's scale (ex: parent = (2,2,2), normally it goes to (0.5,0.5,0.5))
+                // probs not always wanted, TODO
+                objTransform.localScale = Vector3.one;
             }
 
-            if (transf != null)
-            {
-                objTransf.position = transf.position;
-                objTransf.rotation = transf.rotation;
-            }
+            obj.gameObject.SetActive(true);
         }
 
         return obj;
@@ -46,12 +44,15 @@ public class ObjectPooling<TObject> : IDisposable where TObject : MonoBehaviour 
 
     public void RecycleObject(TObject obj)
     {
+        if (PoolsManager.Instance != null && PoolsManager.Instance.isActiveAndEnabled)
+        {
+            obj.transform.SetParent(PoolsManager.Instance.transform);
+        }
+        
         if(obj.isActiveAndEnabled)
         {
             obj.gameObject.SetActive(false);
         }
-        
-        obj.transform.SetParent(PoolsManager.Instance.transform);
         
         PushObject(obj);
     }

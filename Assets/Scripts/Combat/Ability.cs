@@ -9,7 +9,7 @@ public class Ability : MonoBehaviour
 
     public CharacterController2D controller;
 
-    public float baseDamage;
+    //public float baseDamage;
 
     private void Start()
     {
