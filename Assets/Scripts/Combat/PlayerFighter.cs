@@ -8,10 +8,9 @@ public class PlayerFighter : Fighter
     {
         base.KillEntity();
         
-        CharacterController2D cc2D = GetComponent<CharacterController2D>();
-        if (cc2D)
+        if (controller)
         {
-            cc2D.enabled = false;
+            controller.enabled = false;
         }
     }
 }

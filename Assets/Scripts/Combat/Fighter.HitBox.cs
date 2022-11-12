@@ -14,15 +14,15 @@ public partial class Fighter : MonoBehaviour
     /************************************************************************************************************************/
 
     private ObjectPooling<HitBox> hitboxPool;
-    private Dictionary<HitData, HitBox> _ActiveHits;
-    private HashSet<Fighter> _FightersToIgnore;
+    private Dictionary<HitData, HitBox> activeHits;
+    private List<Fighter> fightersToIgnore;
 
     /************************************************************************************************************************/
 
     private void Start()
     {
-        if(_ActiveHits == null)
-            _ActiveHits = new Dictionary<HitData, HitBox>();
+        if(activeHits == null)
+            activeHits = new Dictionary<HitData, HitBox>();
 
         hitboxPool = PoolsManager.hitboxPool;
     }
@@ -31,16 +31,16 @@ public partial class Fighter : MonoBehaviour
     {
         HitBox hitBox = hitboxPool.ObtainObject(sprite.transform);
         
-        hitBox.Activate(data, this, _FightersToIgnore, controller.facingRight);
-        _ActiveHits.Add(data, hitBox);
+        hitBox.Activate(this, data, fightersToIgnore, controller.facingRight);
+        activeHits.Add(data, hitBox);
     }
 
     public void RemoveHitBox(HitData data)
     {
-        if (_ActiveHits.TryGetValue(data, out var hitBox))
+        if (activeHits.TryGetValue(data, out var hitBox))
         {
             hitboxPool.RecycleObject(hitBox);
-            _ActiveHits.Remove(data);
+            activeHits.Remove(data);
         }
     }
 
@@ -60,14 +60,14 @@ public partial class Fighter : MonoBehaviour
     // clears active hit boxes
     public void ClearHitBoxes()
     {
-        if (_ActiveHits != null)
+        if (activeHits != null)
         {
-            foreach (var hitBox in _ActiveHits.Values)
+            foreach (var hitBox in activeHits.Values)
             {
                 hitboxPool.RecycleObject(hitBox);
             }
 
-            _ActiveHits.Clear();
+            activeHits.Clear();
         }
     }
     

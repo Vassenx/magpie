@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c31f89d71ca5e43a8d85a924c5d486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 5768236400495983745}
-  polyCollider2D: {fileID: 5549280684770839902}
-  ownerFighter: {fileID: 0}
+  trigger: {fileID: 5549280684770839902}
+  baseDamage: 0
+  CanHitSameTargetAgain: 0
+  fightersToIgnore: []

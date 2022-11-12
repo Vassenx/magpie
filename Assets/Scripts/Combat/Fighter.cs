@@ -12,7 +12,7 @@ public partial class Fighter : MonoBehaviour
     [SerializeField] protected bool isHittable = true;
     [SerializeField] protected Animator animator;
     [SerializeField] protected SpriteRenderer sprite;
-    [SerializeField] protected CharacterController2D controller;
+    public CharacterController2D controller { get; protected set; }
     protected Transform curTarget; // TODO
     
     [HideInInspector] public float curHealth { get; protected set; }
@@ -53,9 +53,11 @@ public partial class Fighter : MonoBehaviour
         EndHitSequence(); // Hit box
     }
 
-    public virtual void OnTakeDamage(HitData hitInfo)
+    public virtual void OnTakeDamage(HitData hitInfo) => OnTakeDamage(hitInfo.Damage);
+
+    public virtual void OnTakeDamage(float damage)
     {
-        float damageAmount = hitInfo.Damage;
+        float damageAmount = damage;
         
         if (!isHittable)
             return;

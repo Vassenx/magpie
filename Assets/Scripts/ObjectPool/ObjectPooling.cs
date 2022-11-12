@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class ObjectPooling<TObject> : IDisposable where TObject : MonoBehaviour 
                 obj.gameObject.SetActive(false);
                 var objTransform = obj.transform;
                 
-                objTransform.SetParent(parent);
+                objTransform.SetParent(parent, false);
                 
                 // otherwise won't take on the parent's scale (ex: parent = (2,2,2), normally it goes to (0.5,0.5,0.5))
                 // probs not always wanted, TODO
@@ -54,9 +55,19 @@ public class ObjectPooling<TObject> : IDisposable where TObject : MonoBehaviour 
             obj.gameObject.SetActive(false);
         }
         
+        obj.transform.localPosition = Vector3.zero;
+
         PushObject(obj);
     }
-    
+
+    public void RecycleObject(TObject obj, float waitTime) => obj.StartCoroutine(WaitToRecycle(waitTime, obj));
+
+    private IEnumerator WaitToRecycle(float waitTime, TObject obj)
+    {
+        yield return new WaitForSeconds(waitTime);
+        RecycleObject(obj);
+    }
+
     /**************************************************************************/
     
     private TObject PopObject()
@@ -115,5 +126,5 @@ public class ObjectPooling<TObject> : IDisposable where TObject : MonoBehaviour 
         pooledObjects.Clear();
     }
 
-    public void Dispose() => this.Clear();
+    public void Dispose() => Clear();
 }

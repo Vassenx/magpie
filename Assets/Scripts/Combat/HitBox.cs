@@ -4,42 +4,16 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
-public class HitBox : MonoBehaviour
+public class HitBox : IHitBox
 {
-    [SerializeField] private Rigidbody2D rb;
-
-    [SerializeField] private PolygonCollider2D polyCollider2D;
-    public PolygonCollider2D PolyCollider2D => polyCollider2D;
-
-    [SerializeField] private Fighter ownerFighter;
-    private HashSet<Fighter> fightersToIgnore;
     private HitData hitData;
     
-    private void Awake()
-    {
-        polyCollider2D.isTrigger = true;
-    }
-    
-    public void Activate(HitData data, Fighter fighter, HashSet<Fighter> ignore, bool isRight)
+    public void Activate(Fighter fighter, HitData data, List<Fighter> ignore, bool isRight)
     {
         hitData = data;
-        ownerFighter = fighter;
-        fightersToIgnore = ignore;
+        Activate(fighter, hitData.Damage, ignore);
+        
         UpdateColliderDirection(isRight, hitData.Area);
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        Fighter target = GetTarget(col);
-        
-        if (target == null || target == ownerFighter || 
-            (fightersToIgnore != null && fightersToIgnore.Contains(target))) // !target.CanBeHit(ref this)
-            return;
-
-        //if (dontHitAgain)
-        fightersToIgnore?.Add(target);
-        
-        target.OnTakeDamage(hitData);
     }
 
     private void FixedUpdate()
@@ -59,7 +33,8 @@ public class HitBox : MonoBehaviour
     {
         if (isRight)
         {
-            PolyCollider2D.points = area;
+            PolygonCollider2D polyTrigger = (PolygonCollider2D)trigger;
+            polyTrigger.points = area;
         }
         else
         {
@@ -83,10 +58,4 @@ public class HitBox : MonoBehaviour
             PolyCollider2D.enabled = true;*/
         }
     }
-
-    public static Fighter GetTarget(Component component)
-        => GetTarget(component.gameObject);
-
-    public static Fighter GetTarget(GameObject gameObject)
-        => gameObject.transform.parent == null ? gameObject.GetComponent<Fighter>() : gameObject.GetComponentInParent<Fighter>();
 }

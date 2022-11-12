@@ -9447,6 +9447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitBoxPrefab: {fileID: 1273281284989653589, guid: 9e55422049d4614449c0f3a407f4f3f6, type: 3}
+  defaultProjPrefab: {fileID: 5307906571480447667, guid: 67595c767ed66f8478d98cc0a043de63, type: 3}
 --- !u!1 &1836024612
 GameObject:
   m_ObjectHideFlags: 0
@@ -9749,6 +9750,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3966827192605245954, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: defaultAbilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 3966827193266654593}
     - target: {fileID: 3966827192605245964, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
       propertyPath: m_Name
       value: Player
@@ -9805,6 +9810,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2056604925}
+    - target: {fileID: 3966827193178215424, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3966827193571565830, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9813,8 +9822,158 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3966827193754344328, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: fighter
+      value: 
+      objectReference: {fileID: 3966827193266654597}
+    - target: {fileID: 3966827193754344328, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: attackLogic
+      value: 
+      objectReference: {fileID: 3966827193266654596}
+    - target: {fileID: 3966827193754344328, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: flyingAnimClip._Events._Callbacks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966827193754344328, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: groundAnimClip._Events._Callbacks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966827193754344328, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: flyingAnimClip._Events._NormalizedTimes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966827193754344328, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: groundAnimClip._Events._NormalizedTimes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966827193869110669, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966827193869110669, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966827193869110669, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910482217769428777, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910482217769428777, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+--- !u!1 &3966827193266654591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3966827193754344330, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+  m_PrefabInstance: {fileID: 3966827193266654590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3966827193266654592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3966827192605245953, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+  m_PrefabInstance: {fileID: 3966827193266654590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc48f785aeabc4f44873015321f86ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3966827193266654593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966827193266654591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a376cfdab6748418e4a3b32cc925a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flyingAnimClip:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes:
+      - 0.33333334
+      - NaN
+      _Callbacks:
+      - m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 3966827193266654593}
+            m_TargetAssemblyTypeName: RangedAbility, Assembly-CSharp
+            m_MethodName: ShootProjectile
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 1ed0e04cf2828c14f91fe5b2689fe9b3, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+    _Hits: []
+  groundAnimClip:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes:
+      - 0.33333334
+      - NaN
+      _Callbacks:
+      - m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 3966827193266654593}
+            m_TargetAssemblyTypeName: RangedAbility, Assembly-CSharp
+            m_MethodName: ShootProjectile
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      _Names: []
+    _Clip: {fileID: 7400000, guid: d5ea3c3ac077d4c418b938de422d7c1e, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+    _Hits: []
+  fighter: {fileID: 3966827193266654597}
+  controller: {fileID: 3966827193266654592}
+  attackLogic: {fileID: 3966827193266654596}
+  projectileSettings: {fileID: 11400000, guid: adf17ccf5abe4bc4a9db5f93d27874a0, type: 2}
+--- !u!114 &3966827193266654596 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3966827192605245958, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+  m_PrefabInstance: {fileID: 3966827193266654590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7d622f1a3e52b4283f8a81195662e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3966827193266654597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3966827192605245959, guid: 6aa12706435037f4ba89efff33d24235, type: 3}
+  m_PrefabInstance: {fileID: 3966827193266654590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85abed8e5eb4f154eb8f6eb91206c22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6729461847761043749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9880,6 +10039,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846720105365, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122945218529043220, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122945218529043220, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

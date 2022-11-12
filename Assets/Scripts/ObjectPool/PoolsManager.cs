@@ -10,6 +10,9 @@ public class PoolsManager : MonoBehaviour
     public static ObjectPooling<HitBox> hitboxPool;
     [SerializeField] private HitBox hitBoxPrefab;
     
+    public static ObjectPooling<Projectile> projPool;
+    [SerializeField] private Projectile defaultProjPrefab;
+    
     public static PoolsManager Instance { get; private set; }
     
     private void Awake() 
@@ -29,5 +32,6 @@ public class PoolsManager : MonoBehaviour
     private void InitPools()
     {
         hitboxPool = new ObjectPooling<HitBox>(hitBoxPrefab);
+        projPool = new ObjectPooling<Projectile>(defaultProjPrefab);
     }
 }

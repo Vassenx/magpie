@@ -35,7 +35,7 @@ public class PlayerAttackLogic : MonoBehaviour
             canCombo = true;
             inAttack = true;
 
-            abilityAnimState.SetAnim(meleeAbility.flyingAnimClip);
+            abilityAnimState.SetAnim(meleeAbility.GetAnim());
             abilityAnimState.OwnerStateMachine.TrySetState(abilityAnimState);
         }
         else
@@ -46,16 +46,31 @@ public class PlayerAttackLogic : MonoBehaviour
 
     public void OnRangedInput(RangedAbility rangedAbility)
     {
-        // TODO
+        if (!inAttack)
+        {
+            canCombo = true;
+            inAttack = true;
+
+            abilityAnimState.SetAnim(rangedAbility.GetAnim());
+            abilityAnimState.OwnerStateMachine.TrySetState(abilityAnimState);
+        }
+        else
+        {
+            // MeleeCombo(attack);
+        }
     }
 
+    // TODO: stuff below
+    
     // ANIMATION EVENT
-    public void AttackDone(MeleeAbility meleeAttack)
+    public void AttackDone(Ability ability)
     {
-        if (meleeAttack == _prevMeleeAttack)
+        if (ability == _prevMeleeAttack)
         {
             inAttack = false;
         }
+
+        inAttack = false; // temp, figuring out range combo stuff
     }
 
     // TODO: combo stuff
