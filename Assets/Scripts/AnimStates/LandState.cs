@@ -1,28 +1,31 @@
 using UnityEngine;
 using Animancer;
 
-public class LandState : CharacterBaseState
+namespace Magpie
 {
-    [SerializeField] private ClipTransition Land;
-    
-    protected override void Awake()
+    public class LandState : CharacterBaseState
     {
-        base.Awake();
-        
-        Land.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
+        [SerializeField] private ClipTransition Land;
 
-        CharacterController2D.OnGroundedChanged += (bool isGrounded) =>
+        protected override void Awake()
         {
-            if (isGrounded)
-            {
-                controller.characterStateMachine.TrySetState(this);
-            }
-        };
-    }
+            base.Awake();
 
-    public override void OnEnterState()
-    {
-        base.OnEnterState();
-        animancer.Play(Land);
+            Land.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
+
+            CharacterController2D.OnGroundedChanged += (bool isGrounded) =>
+            {
+                if (isGrounded)
+                {
+                    controller.characterStateMachine.TrySetState(this);
+                }
+            };
+        }
+
+        public override void OnEnterState()
+        {
+            base.OnEnterState();
+            animancer.Play(Land);
+        }
     }
 }

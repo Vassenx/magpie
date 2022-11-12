@@ -123,6 +123,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &80573613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6729461846227923156, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+  m_PrefabInstance: {fileID: 6729461847761043749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &80573623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80573613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7d622f1a3e52b4283f8a81195662e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityAnimState: {fileID: 117061346}
+--- !u!1 &117061340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6729461845961531842, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+  m_PrefabInstance: {fileID: 6729461847761043749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &117061346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117061340}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c0b5007106748498bc4a0de3fc75d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &210315080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9993,10 +10028,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923155, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: tree
+      value: 
+      objectReference: {fileID: 11400000, guid: 928b9d927c8bf1e4b84479887a63cf47, type: 2}
     - target: {fileID: 6729461846227923156, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923158, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: attackLogic
+      value: 
+      objectReference: {fileID: 80573623}
     - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
       propertyPath: m_RootOrder
       value: 7

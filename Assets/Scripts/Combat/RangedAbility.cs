@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedAbility : Ability
+namespace Magpie
 {
-    [SerializeField] private ProjectileSettings projectileSettings;
-
-    public void ShootProjectile() // Anim clip event
+    public class RangedAbility : Ability
     {
-        Projectile projectile = PoolsManager.projPool.ObtainObject(null);
-        
-        projectile.Fire(fighter, projectileSettings);
+        [SerializeField] private ProjectileSettings projectileSettings;
+
+        public void ShootProjectile() // Anim clip event
+        {
+            Projectile projectile = PoolsManager.projPool.ObtainObject(null);
+
+            projectile.Fire(fighter, projectileSettings);
+        }
     }
 }

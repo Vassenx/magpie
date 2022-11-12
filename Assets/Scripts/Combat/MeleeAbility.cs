@@ -1,6 +1,9 @@
 using Animancer;
 using UnityEngine;
 
-public class MeleeAbility : Ability
+namespace Magpie
 {
+    public class MeleeAbility : Ability
+    {
+    }
 }

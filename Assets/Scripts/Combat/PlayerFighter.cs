@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFighter : Fighter
+namespace Magpie
 {
-    protected override void KillEntity()
+    public class PlayerFighter : Fighter
     {
-        base.KillEntity();
-        
-        if (controller)
+        protected override void KillEntity()
         {
-            controller.enabled = false;
+            base.KillEntity();
+
+            if (controller)
+            {
+                controller.enabled = false;
+            }
         }
     }
 }

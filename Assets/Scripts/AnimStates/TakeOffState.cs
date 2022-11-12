@@ -1,26 +1,29 @@
 using UnityEngine;
 using Animancer;
 
-public class TakeOffState : CharacterBaseState
+namespace Magpie
 {
-    [SerializeField] private ClipTransition TakeOff;
-    
-    protected override void Awake()
+    public class TakeOffState : CharacterBaseState
     {
-        base.Awake();
-        
-        CharacterController2D.OnGroundedChanged += (bool isGrounded) =>
-        {
-            if (!isGrounded)
-            {
-                controller.characterStateMachine.TrySetState(this);
-            }
-        };
-    }
+        [SerializeField] private ClipTransition TakeOff;
 
-    public override void OnEnterState()
-    {
-        base.OnEnterState();
-        animancer.Play(TakeOff);
+        protected override void Awake()
+        {
+            base.Awake();
+
+            CharacterController2D.OnGroundedChanged += (bool isGrounded) =>
+            {
+                if (!isGrounded)
+                {
+                    controller.characterStateMachine.TrySetState(this);
+                }
+            };
+        }
+
+        public override void OnEnterState()
+        {
+            base.OnEnterState();
+            animancer.Play(TakeOff);
+        }
     }
 }

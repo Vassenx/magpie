@@ -2,41 +2,46 @@ using Animancer.FSM;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputHandler : MonoBehaviour
+namespace Magpie
 {
-    [SerializeField] private PlayerController2D playerController;
-    [SerializeField] private AttackInputMappings inputMappings;
-    [SerializeField] private PlayerAttackLogic playerAttackLogic;
-    
-    [SerializeField] private MovementState movementAnimState;
+    public class PlayerInputHandler : MonoBehaviour
+    {
+        [SerializeField] private PlayerController2D playerController;
+        [SerializeField] private AttackInputMappings inputMappings;
+        [SerializeField] private AttackLogic playerAttackLogic;
 
-    public void OnMove(InputValue input)
-    {
-        Vector2 inputVec = input.Get<Vector2>();
-        playerController.SetMovement(inputVec);
-        
-        // anim
-        if (!Mathf.Approximately(inputVec.x, 0) || !Mathf.Approximately(inputVec.y, 0))
+        [SerializeField] private MovementState movementAnimState;
+
+        public void OnMove(InputValue input)
         {
-            movementAnimState.OwnerStateMachine.TrySetState(movementAnimState);
+            Vector2 inputVec = input.Get<Vector2>();
+            playerController.SetMovement(inputVec);
+
+            // anim
+            if (!Mathf.Approximately(inputVec.x, 0) || !Mathf.Approximately(inputVec.y, 0))
+            {
+                movementAnimState.OwnerStateMachine.TrySetState(movementAnimState);
+            }
         }
-    }
-    
-    public void OnMeleeAbility(InputValue input)
-    {
-        if (input.isPressed)
+
+        public void OnMeleeAbility(InputValue input)
         {
-            MeleeAbility meleeAbility = (MeleeAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.MeleeAbility);
-            playerAttackLogic.OnMeleeInput(meleeAbility);
+            if (input.isPressed)
+            {
+                MeleeAbility meleeAbility =
+                    (MeleeAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.MeleeAbility);
+                playerAttackLogic.OnMeleeInput(meleeAbility);
+            }
         }
-    }
-    
-    public void OnRangedAbility(InputValue input)
-    {
-        if (input.isPressed)
+
+        public void OnRangedAbility(InputValue input)
         {
-            RangedAbility rangedAbility = (RangedAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.RangedAbility);
-            playerAttackLogic.OnRangedInput(rangedAbility);
+            if (input.isPressed)
+            {
+                RangedAbility rangedAbility =
+                    (RangedAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.RangedAbility);
+                playerAttackLogic.OnRangedInput(rangedAbility);
+            }
         }
     }
 }

@@ -7,6 +7,7 @@
 using Animancer;
 using Animancer.Units;
 using System;
+using Magpie;
 using UnityEngine;
 
 namespace PlatformerGameKit

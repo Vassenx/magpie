@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIController : MonoBehaviour
+namespace Magpie
 {
-    void Awake()
+    public class AIController : MonoBehaviour
     {
-        var agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        public AttackLogic attackLogic;
+
+        void Awake()
+        {
+            var agent = GetComponent<NavMeshAgent>();
+            agent.updateRotation = false;
+            agent.updateUpAxis = false;
+        }
     }
 }

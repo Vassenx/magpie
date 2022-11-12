@@ -19,8 +19,10 @@ namespace TheKiwiCoder {
         public BoxCollider boxCollider;
         public CapsuleCollider capsuleCollider;
         public CharacterController characterController;
-        // Add other game specific systems here
 
+        // Add other game specific systems here
+        //public Magpie.AIController aiController;
+        
         public static Context CreateFromGameObject(GameObject gameObject) {
             // Fetch all commonly used components
             Context context = new Context();
@@ -35,6 +37,7 @@ namespace TheKiwiCoder {
             context.characterController = gameObject.GetComponent<CharacterController>();
             
             // Add whatever else you need here...
+            //context.aiController = gameObject.GetComponent<AIController>();
 
             return context;
         }

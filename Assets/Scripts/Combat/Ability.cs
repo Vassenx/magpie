@@ -2,40 +2,43 @@ using System;
 using UnityEngine;
 using PlatformerGameKit;
 
-public class Ability : MonoBehaviour
+namespace Magpie
 {
-    [SerializeField] protected AttackTransition flyingAnimClip;
-    [SerializeField] protected AttackTransition groundAnimClip;
-
-    public Fighter fighter;
-    public CharacterController2D controller;
-    public PlayerAttackLogic attackLogic;
-
-    //public float baseDamage;
-
-    protected virtual void Start()
+    public class Ability : MonoBehaviour
     {
-        attackLogic = transform.parent.GetComponent<PlayerAttackLogic>(); // TODO: enemies cant use this
-        
-        if (controller != null)
-        {
-            flyingAnimClip.Events.OnEnd += SendAbilityEnd;
-            groundAnimClip.Events.OnEnd += SendAbilityEnd;
-            
-            flyingAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
-            groundAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
-        }
-    }
+        [SerializeField] protected AttackTransition flyingAnimClip;
+        [SerializeField] protected AttackTransition groundAnimClip;
 
-    public virtual AttackTransition GetAnim()
-    {
-        if (controller != null)
+        public Fighter fighter;
+        public CharacterController2D controller;
+        public AttackLogic attackLogic;
+
+        //public float baseDamage;
+
+        protected virtual void Start()
         {
-            return controller.isGrounded ? groundAnimClip : flyingAnimClip;
+            attackLogic = transform.parent.GetComponent<AttackLogic>(); // TODO: enemies cant use this
+
+            if (controller != null)
+            {
+                flyingAnimClip.Events.OnEnd += SendAbilityEnd;
+                groundAnimClip.Events.OnEnd += SendAbilityEnd;
+
+                flyingAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
+                groundAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
+            }
         }
 
-        return null;
-    }
+        public virtual AttackTransition GetAnim()
+        {
+            if (controller != null)
+            {
+                return controller.isGrounded ? groundAnimClip : flyingAnimClip;
+            }
 
-    public void SendAbilityEnd() => attackLogic.AttackDone(this);
+            return null;
+        }
+
+        public void SendAbilityEnd() => attackLogic.AttackDone(this);
+    }
 }
