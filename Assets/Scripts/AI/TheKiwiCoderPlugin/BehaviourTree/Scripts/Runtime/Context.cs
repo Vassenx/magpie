@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Magpie;
 
 namespace TheKiwiCoder {
 
@@ -21,7 +22,7 @@ namespace TheKiwiCoder {
         public CharacterController characterController;
 
         // Add other game specific systems here
-        //public Magpie.AIController aiController;
+        public Magpie.AIController aiController;
         
         public static Context CreateFromGameObject(GameObject gameObject) {
             // Fetch all commonly used components
@@ -37,7 +38,7 @@ namespace TheKiwiCoder {
             context.characterController = gameObject.GetComponent<CharacterController>();
             
             // Add whatever else you need here...
-            //context.aiController = gameObject.GetComponent<AIController>();
+            context.aiController = gameObject.GetComponent<AIController>();
 
             return context;
         }

@@ -13,38 +13,38 @@ MonoBehaviour:
   m_Name: ExampleAI
   m_EditorClassIdentifier: 
   rootNode:
-    rid: 7391294580694712323
+    rid: 7391294580866416640
   nodes:
-  - rid: 7391294580694712323
-  - rid: 7391294580694712324
+  - rid: 7391294580866416640
+  - rid: 7391294580866416641
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
-  viewPosition: {x: 120.8, y: 233.6, z: 0}
+  viewPosition: {x: 282.4, y: 217.6, z: 0}
   viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
-    - rid: 7391294580694712323
-      type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp-firstpass}
+    - rid: 7391294580866416640
+      type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
-        guid: ae845839-3fd7-47fd-b85d-47a7113895c2
+        guid: 8bd1a0a2-f2dc-4c75-b823-132d16c2413a
         position: {x: 0, y: 0}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
         description: 
         drawGizmos: 0
         child:
-          rid: 7391294580694712324
-    - rid: 7391294580694712324
+          rid: 7391294580866416641
+    - rid: 7391294580866416641
       type: {class: MoveToPos, ns: Magpie, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
-        guid: 32b7baa10afdf7e438fa87af5d81e78c
-        position: {x: -94.399994, y: 155.6}
+        guid: 9c8a02b69a16cc64696359e4a3f1e625
+        position: {x: -101.400024, y: 167.79999}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
         description: 
