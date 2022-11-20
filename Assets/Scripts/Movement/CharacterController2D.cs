@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Animancer.FSM;
+using UnityEngine.AI;
 
 namespace Magpie
 {
@@ -12,6 +13,7 @@ namespace Magpie
             new StateMachine<CharacterBaseState>.WithDefault();
 
         public Rigidbody2D r2d { get; private set; }
+        public NavMeshAgent aiAgent { get; private set; }
         private CapsuleCollider2D mainCollider;
         [SerializeField] private SpriteRenderer sprite;
 
@@ -26,6 +28,7 @@ namespace Magpie
         {
             characterStateMachine.DefaultState = GetComponentInChildren<IdleState>();
             r2d = GetComponent<Rigidbody2D>();
+            aiAgent = GetComponent<NavMeshAgent>();
             mainCollider = GetComponent<CapsuleCollider2D>();
             isGrounded = true;
         }
@@ -33,10 +36,7 @@ namespace Magpie
         protected virtual void Start()
         {
             r2d.gravityScale = GRAVITY_SCALE;
-        }
-
-        protected virtual void Update()
-        {
+            facingRight = transform.localScale.x > 0;
         }
 
         protected virtual void FixedUpdate()
@@ -51,7 +51,7 @@ namespace Magpie
                 return;
 
             // Change facing direction
-            float xVel = r2d.velocity.x;
+            float xVel = aiAgent == null ? r2d.velocity.x : aiAgent.velocity.x; // rigidbody velocity not correct for ai agents in Unity
             if ((xVel > 0 && !facingRight) || (xVel < 0 && facingRight))
             {
                 facingRight = !facingRight;

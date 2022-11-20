@@ -22,7 +22,8 @@ namespace TheKiwiCoder {
         public CharacterController characterController;
 
         // Add other game specific systems here
-        public Magpie.AIController aiController;
+        public AIController aiController;
+        public EnemyFighter enemyFighter;
         
         public static Context CreateFromGameObject(GameObject gameObject) {
             // Fetch all commonly used components
@@ -39,7 +40,8 @@ namespace TheKiwiCoder {
             
             // Add whatever else you need here...
             context.aiController = gameObject.GetComponent<AIController>();
-
+            context.enemyFighter = gameObject.GetComponent<EnemyFighter>();
+            
             return context;
         }
     }

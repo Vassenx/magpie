@@ -12,7 +12,8 @@ namespace Magpie
         
         protected override void OnStart()
         {
-            context.aiController.attackLogic.OnRangedInput(rangedAbility);
+            if(rangedAbility != null)
+                context.aiController.attackLogic.OnRangedInput(rangedAbility);
         }
 
         protected override void OnStop()

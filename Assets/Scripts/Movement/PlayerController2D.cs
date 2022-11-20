@@ -25,15 +25,7 @@ namespace Magpie
         {
             base.Start();
             r2d.freezeRotation = true;
-            r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-
-            facingRight = transform.localScale.x > 0;
-        }
-
-        protected override void Update()
-        {
-            base.Update();
-            FlipFacing();
+            r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous; 
         }
 
         public void SetMovement(Vector2 value)

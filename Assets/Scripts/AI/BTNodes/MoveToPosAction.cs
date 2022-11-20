@@ -5,7 +5,7 @@ using TheKiwiCoder;
 
 namespace Magpie
 {
-    public class MoveToPos : ActionNode
+    public class MoveToPosAction : ActionNode
     {
         [SerializeField] private float tolerance = 1.0f;
 

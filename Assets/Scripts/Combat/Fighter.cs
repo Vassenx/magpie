@@ -16,7 +16,7 @@ namespace Magpie
         [SerializeField] protected Animator animator;
         [SerializeField] protected SpriteRenderer sprite;
         public CharacterController2D controller { get; protected set; }
-        protected Transform curTarget; // TODO
+        public Transform curTarget; // TODO
 
         [HideInInspector] public float curHealth { get; protected set; }
         [HideInInspector] public bool inCombat { get; protected set; } // TODO: change to false (player vs enemy

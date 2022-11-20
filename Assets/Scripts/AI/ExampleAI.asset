@@ -13,40 +13,91 @@ MonoBehaviour:
   m_Name: ExampleAI
   m_EditorClassIdentifier: 
   rootNode:
-    rid: 7391294580866416640
+    rid: 7391294580866416642
   nodes:
-  - rid: 7391294580866416640
-  - rid: 7391294580866416641
+  - rid: 7391294580866416642
+  - rid: 7391294580866416645
+  - rid: 7391294580866416646
+  - rid: 7391294580866416647
+  - rid: 7391294580866416648
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
-  viewPosition: {x: 282.4, y: 217.6, z: 0}
+    curTarget: {fileID: 0}
+  viewPosition: {x: 343.2, y: 152.8, z: 0}
   viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
-    - rid: 7391294580866416640
+    - rid: 7391294580866416642
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
-        guid: 8bd1a0a2-f2dc-4c75-b823-132d16c2413a
-        position: {x: 0, y: 0}
+        guid: 21e39cb8-5c8b-44c2-b26d-b120503e91d0
+        position: {x: 57, y: -105}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
+          curTarget: {fileID: 0}
         description: 
         drawGizmos: 0
         child:
-          rid: 7391294580866416641
-    - rid: 7391294580866416641
-      type: {class: MoveToPos, ns: Magpie, asm: Assembly-CSharp}
+          rid: 7391294580866416648
+    - rid: 7391294580866416645
+      type: {class: ShootAction, ns: Magpie, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
-        guid: 9c8a02b69a16cc64696359e4a3f1e625
-        position: {x: -101.400024, y: 167.79999}
+        guid: dcbf2da48ee093046ac786b28c386d35
+        position: {x: 25, y: 292.8}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
+          curTarget: {fileID: 0}
+        description: 
+        drawGizmos: 0
+        rangedAbility: {fileID: 0}
+    - rid: 7391294580866416646
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 753e478e35a32504aa7b4f71291222f3
+        position: {x: -38.799988, y: 180.79999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          curTarget: {fileID: 0}
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 7391294580866416647
+        - rid: 7391294580866416645
+    - rid: 7391294580866416647
+      type: {class: MoveToTargetAction, ns: Magpie, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 8a5d1b9d590de624b995a42dfd1c83fc
+        position: {x: -156.79999, y: 292.8}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          curTarget: {fileID: 0}
         description: 
         drawGizmos: 0
         tolerance: 1
+        deAggroTimer: 1
+    - rid: 7391294580866416648
+      type: {class: Repeat, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: bb1ae193b9f8afc42a26554d0d478d77
+        position: {x: -38.400024, y: 92}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          curTarget: {fileID: 0}
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 7391294580866416646
+        restartOnSuccess: 1
+        restartOnFailure: 1
