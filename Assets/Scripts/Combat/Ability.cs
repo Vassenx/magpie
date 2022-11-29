@@ -4,20 +4,23 @@ using PlatformerGameKit;
 
 namespace Magpie
 {
+    [System.Serializable]
     public class Ability : MonoBehaviour
     {
+        public string abilityName;
+
         [SerializeField] protected AttackTransition flyingAnimClip;
         [SerializeField] protected AttackTransition groundAnimClip;
 
-        public Fighter fighter;
-        public CharacterController2D controller;
-        public AttackLogic attackLogic;
+        [SerializeField] protected Fighter fighter;
+        [SerializeField] protected CharacterController2D controller;
+        [SerializeField] protected AttackLogic attackLogic;
 
         //public float baseDamage;
 
         protected virtual void Start()
         {
-            attackLogic = transform.parent.GetComponent<AttackLogic>(); // TODO: enemies cant use this
+            attackLogic = transform.parent.GetComponent<AttackLogic>();
 
             if (controller != null)
             {

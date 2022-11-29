@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: tempblack
+  m_Name: Sprite Sheet Vertical 192x384_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: b31bb2be529c49b439aea5637317a041, type: 3}
+  m_Sprite: {fileID: -2114283039, guid: 712ea7c073e16a04297795e346139cbe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

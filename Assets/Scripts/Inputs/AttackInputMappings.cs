@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public enum AbilityInputNamesEnum { MeleeAbility, RangedAbility }
-
 namespace Magpie
 {
+    public enum AbilityInputNamesEnum { MeleeAbility, RangedAbility }
+
     public class AttackInputMappings : MonoBehaviour
     {
         [SerializeField] private AbilityInputNamesEnum[] inputNames;

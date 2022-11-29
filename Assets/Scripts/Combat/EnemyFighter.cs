@@ -1,4 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
+using Sirenix.OdinInspector;
 using TheKiwiCoder;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,9 +18,10 @@ namespace Magpie
         [SerializeField] private float radius = 10f;
         [SerializeField] private float fovAngleDeg = 120f;
         [SerializeField] private LayerMask aggroLayerMask;
+        [ValueDropdown("GetAbilities")][SerializeField] private Ability rangedAbility;
 
         [SerializeField] private BehaviourTreeRunner btreeRunner;
-
+        
         private void Update() // fixedupdate?
         {
             Transform player = FindPlayer();
@@ -49,6 +54,13 @@ namespace Magpie
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
         
+                
+        private IEnumerable GetAbilities()
+        {
+            return GetComponentsInChildren<Ability>()
+                .Select(x => new ValueDropdownItem(x.abilityName, x));
+        }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
