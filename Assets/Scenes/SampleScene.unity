@@ -36275,13 +36275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e374c8bf458578e4d8cdf866257e237a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 681332595}
   playerRb: {fileID: 3966827193266654603}
   vCams:
   - {fileID: 1023648965}
   - {fileID: 1778108350}
   turnSpeed: 0.2
-  rotateAmount: 180
   gravityFallSpeed: 100
 --- !u!1 &1697328447
 GameObject:
