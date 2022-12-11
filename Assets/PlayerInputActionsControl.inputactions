@@ -147,7 +147,7 @@
                 {
                     "name": "",
                     "id": "701437d4-2122-4f84-acf1-2eb5a148584a",
-                    "path": "<Gamepad>/rightStickPress",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

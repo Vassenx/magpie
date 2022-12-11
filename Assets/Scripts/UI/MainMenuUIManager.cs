@@ -1,76 +1,83 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Magpie
 {
     public class MainMenuUIManager : MonoBehaviour
     {
-        [SerializeField] private VerticalLayoutGroup mainMenu;
-        [SerializeField] private VerticalLayoutGroup settingsMenu;
-        [SerializeField] private PopUp popUpPrefab;
-        private PopUp curPopUp;
+        [SerializeField] private GameObject mainMenu;
+        [SerializeField] private TMPro.TextMeshProUGUI titleText;
+        [SerializeField] private OptionsMenu optionsMenu;
+        [SerializeField] private Button mainMenuFirstSelected, optionMenuFirstSelected;
+        [SerializeField] private List<Button> buttons;
         
-        [Header("Settings Pages")]
-        [SerializeField] private GameObject visualsPage;
-        [SerializeField] private GameObject audioPage;
-        [SerializeField] private GameObject controlsPage;
-        private GameObject activeSettingsPage;
-        // cache default settings to be able to revert to default
+        [SerializeField] private bool inGame;
+        public InputSystemUIInputModule inputModule ;
         
-        [Header("Audio")]
-        [SerializeField] private AudioMixer audioMixer;
-        [SerializeField] private Slider masterVolSlider;
-        [SerializeField] private Slider musicVolSlider;
-        [SerializeField] private Slider effectsVolSlider;
-        [SerializeField] private Slider uiEffectsVolSlider;
-
-        [Header("Visuals")] 
-        [SerializeField] private List<ResolutionStruct> resolutionOptions;
-        [SerializeField] private TMPro.TMP_Dropdown resolutionDropdownUI;
-        [SerializeField] private TMPro.TMP_Dropdown graphicsQualityDropdownUI;
-        [Serializable] struct ResolutionStruct { public int width, height; }
+        [SerializeField] private UIPreferences uiPrefs;
+        [SerializeField] private PlayerInput input;
         
         private void Start()
         {
-            LoadAudio();
-            HideSettings();
-            SetUpVisuals();
+            optionsMenu.gameObject.SetActive(false);
+            mainMenu.SetActive(!inGame);
+            OnHighlightButton(buttons[0]);
+        }
+        
+        private void OnEnable ()
+        {
+            input.SwitchCurrentActionMap("UI");
+            inputModule.cancel.action.performed += Escape;
         }
 
-        public void Escape(InputAction.CallbackContext context)
+        private void OnDisable()
         {
-            if (context.started)
-            {
-                if (curPopUp && curPopUp.IsPopUpActive())
-                {
-                    curPopUp.OnClickPopUpButton(false);
-                }
-                else
-                {
-                    OnBackButtonClicked();
-                } 
-            }
+            input.SwitchCurrentActionMap("Player");
+            inputModule.cancel.action.performed -= Escape;
         }
 
         private void Update()
         {
-            if (!settingsMenu.IsActive() && !mainMenu.IsActive()) // fallback
+            if (!optionsMenu.isActiveAndEnabled && !mainMenu.activeInHierarchy && !inGame) // fallback
             {
-                mainMenu.gameObject.SetActive(true);
+                mainMenu.SetActive(true);
+                
+                if(titleText != null)
+                    titleText.gameObject.SetActive(true);
+            }
+        }
+        
+        public void OnHighlightButton(Button button) // visuals update
+        {
+            bool enable = false;
+            foreach (var curButton in buttons)
+            {
+                enable = button == curButton;
+                var icon = curButton.GetComponentsInChildren<Image>(true).FirstOrDefault(x => x.gameObject != curButton.gameObject);
+                icon?.gameObject.SetActive(enable);
+                curButton.GetComponentInChildren<TextMeshProUGUI>().color = enable ? uiPrefs.buttonWhite : uiPrefs.buttonGrayed;
             }
         }
 
-        /* Main Menu Buttons */
-        
         public void OnContinueButtonClicked()
         {
-            SceneManager.LoadScene("Scenes/SampleScene"); // TODO: get scene the player is saved in
+            if (inGame)
+            {
+                mainMenu.SetActive(false);
+                TogglePause(false);
+            }
+            else
+            {
+                SceneManager.LoadScene("Scenes/SampleScene"); // TODO: get scene the player is saved in
+            }
         }
         
         public void OnNewGameButtonClicked() // TODO: confirmation pop up
@@ -78,182 +85,98 @@ namespace Magpie
             SceneManager.LoadScene("Scenes/SampleScene"); // TODO: get starting game scene
         }
         
-        public void OnSettingsButtonClicked()
+        public void OpenOptionsMenu()
         {
-            mainMenu.gameObject.SetActive(false);
-            settingsMenu.gameObject.SetActive(true);
-            SetPageActive("visuals");
-        }
-        
-        public void OnQuitButtonClicked() => Application.Quit(); // TODO: confirmation pop up
-        
-        /* Settings */
-
-        private void HideSettings()
-        {
-            Assert.IsTrue(mainMenu != null && settingsMenu != null && visualsPage != null && audioPage != null && controlsPage != null, 
-                "No settings ui page in MainMenuUIManager");
-
-            settingsMenu.gameObject.SetActive(false);
-            visualsPage.SetActive(false);
-            audioPage.SetActive(false);
-            controlsPage.SetActive(false);
-            activeSettingsPage = null;
-        }
-
-        public void OnVisualsButtonClicked() => SetPageActive("visuals");
-        
-        public void OnAudioButtonClicked() => SetPageActive("audio");
-        
-        public void OnControlsButtonClicked() => SetPageActive("controls");
-
-        public void OnBackButtonClicked() => SetPageActive("back");
-
-        private void SetPageActive(string pageName)
-        {
-            if (visualsPage == null || audioPage == null || controlsPage == null)
+            mainMenu.SetActive(false);
+            
+            if (titleText != null)
             {
-                Debug.LogError("No settings ui page in MainMenuUIManager");
-                return;
+                titleText.gameObject.SetActive(false);
             }
 
-            visualsPage.SetActive(false);
-            audioPage.SetActive(false);
-            controlsPage.SetActive(false);
-
-            switch (pageName)
-            {
-                case "visuals":
-                    visualsPage.SetActive(true);
-                    activeSettingsPage = visualsPage;
-                    break;
-
-                case "audio":
-                    audioPage.SetActive(true);
-                    activeSettingsPage = audioPage;
-                    break;
-                case "controls":
-                    controlsPage.SetActive(true);
-                    activeSettingsPage = controlsPage;
-                    break;
-                case "back":
-                    settingsMenu.gameObject.SetActive(false);
-                    mainMenu.gameObject.SetActive(true);
-                    activeSettingsPage = null;
-                    break;
-            }
+            optionsMenu.gameObject.SetActive(true);
+            
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(optionMenuFirstSelected.gameObject);
         }
 
-        /* Audio slides (set up with the Audio Mixer, which needs to be assigned to EVERY audio source in the game) */
-        private void LoadAudio()
+        public void OnQuitButtonClicked()
         {
-            Assert.IsTrue(masterVolSlider && musicVolSlider  && effectsVolSlider && uiEffectsVolSlider, 
-                "No audio slider in MainMenuUIManager");
-            
-            float masterVolLvl = PlayerPrefs.GetFloat("masterVolume", 0.75f);
-            float musicVolLvl = PlayerPrefs.GetFloat("musicVolume", 0.75f);
-            float effectsVolLvl = PlayerPrefs.GetFloat("effectsVolume", 0.50f);
-            float uiEffectsVolLvl = PlayerPrefs.GetFloat("uiEffectsVolume", 0.50f);
-            
-            masterVolSlider.value = masterVolLvl;
-            musicVolSlider.value = musicVolLvl;
-            effectsVolSlider.value = effectsVolLvl;
-            uiEffectsVolSlider.value = uiEffectsVolLvl;
-            
-            audioMixer.SetFloat ("masterVolume", Mathf.Log10(masterVolLvl) * 20);
-            audioMixer.SetFloat ("musicVolume", Mathf.Log10(musicVolLvl) * 20);
-            audioMixer.SetFloat ("effectsVolume", Mathf.Log10(effectsVolLvl) * 20);
-            audioMixer.SetFloat ("uiEffectsVolume", Mathf.Log10(uiEffectsVolLvl) * 20);
+            PopUp.instance.DisplayPopUp(PopUpQuit, null);
         }
 
-        private void SetUpVisuals()
+        public void Escape(InputAction.CallbackContext context)
         {
-            /* Resolution */
-            var curRes = Screen.currentResolution;
-            int curResIndex = 0;
-            
-            Screen.SetResolution(curRes.width, curRes.height, Screen.fullScreenMode); // TODO: is this player pref stored?
-
-            // dropdown naming
-            if (resolutionDropdownUI != null)
+            if (context.performed)
             {
-                List<string> resolutionNames = new List<string>();
-                for(int i = 0; i < resolutionOptions.Count; i++)
+                if (optionsMenu.isActiveAndEnabled)
                 {
-                    var res = resolutionOptions[i];
-                    resolutionNames.Add(res.width + " x " + res.height);
-                
-                    if ((Screen.width == res.width) && (Screen.height == res.height))
-                        curResIndex = i;
+                    PopUp.instance.DisplayPopUp(PopUpCloseOptions, buttons[0].gameObject);
                 }
-                resolutionDropdownUI.ClearOptions();
-                resolutionDropdownUI.AddOptions(resolutionNames);
-                resolutionDropdownUI.value = curResIndex;
-                resolutionDropdownUI.RefreshShownValue();
+                else
+                {
+                    if (inGame)
+                    {
+                        mainMenu.SetActive(!mainMenu.activeInHierarchy);
+                        TogglePause(mainMenu.activeInHierarchy);
+                    }
+                    else
+                    {
+                        Quit();
+                    }
+                }
             }
+        }
 
-            /* Graphics Quality */
-            if (graphicsQualityDropdownUI != null)
+        private void TogglePause(bool pause)
+        {
+            if (pause)
             {
-                graphicsQualityDropdownUI.ClearOptions();
-                graphicsQualityDropdownUI.AddOptions(new List<string>() {"Low" , "Medium", "High"});
-                graphicsQualityDropdownUI.value = PlayerPrefs.HasKey("graphicsQualityIndex") ? PlayerPrefs.GetInt("graphicsQualityIndex") : 2; // ie high on start
-                graphicsQualityDropdownUI.RefreshShownValue();
-            }
-        }
-        
-        public void SetMasterVolumeLevel(float masterVolLvl)
-        {
-            audioMixer.SetFloat ("masterVolume", Mathf.Log10(masterVolLvl) * 20);
-            PlayerPrefs.SetFloat("masterVolume", masterVolLvl);
-        }
-
-        public void SetMusicVolumeLevel(float musicVolLvl)
-        {
-            audioMixer.SetFloat ("musicVolume", Mathf.Log10(musicVolLvl) * 20);
-            PlayerPrefs.SetFloat("musicVolume", musicVolLvl);
-        }
-        
-        public void SetEffectsVolumeLevel(float effectsVolLvl)
-        {
-            audioMixer.SetFloat ("effectsVolume", Mathf.Log10(effectsVolLvl) * 20);
-            PlayerPrefs.SetFloat("effectsVolume", effectsVolLvl);
-        }
-     
-        public void SetUIEffectsVolumeLevel(float uiEffectsVolLvl)
-        {
-            audioMixer.SetFloat ("uiEffectsVolume", Mathf.Log10(uiEffectsVolLvl) * 20);
-            PlayerPrefs.SetFloat("uiEffectsVolume", uiEffectsVolLvl);
-        }
-
-        // TODO: work for OS vs Windows
-        public void SetResolution(int index) => Screen.SetResolution(resolutionOptions[index].width, resolutionOptions[index].height, Screen.fullScreenMode);
-
-        public void SetFullScreen(bool isFullScreen) => Screen.fullScreen = isFullScreen;
-
-        public void SetGraphicsQuality(int index)
-        {
-            QualitySettings.SetQualityLevel(index);
-            PlayerPrefs.SetFloat("graphicsQualityIndex", index);
-        }
-
-        public void OnClickRevertToDefault()
-        {
-            curPopUp = Instantiate(popUpPrefab, transform);
-            curPopUp.DisplayPopUp(RevertToDefault);
-        }
-        
-        // TODO: implement controls page and default caching & reverting
-        public void RevertToDefault(bool isConfirmed)
-        {
-            if (isConfirmed)
-            {
-                Debug.Log("reverting to default");
+                Time.timeScale = 0f;
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(mainMenuFirstSelected.gameObject);
             }
             else
             {
-                Debug.Log("NOT reverting to default");
+                Time.timeScale = 1f;
             }
+        }
+        
+        public void PopUpCloseOptions(bool isConfirmed)
+        {
+            if (isConfirmed)
+            {
+                // TODO save settings
+                optionsMenu.gameObject.SetActive(false);
+                mainMenu.SetActive(true);
+                
+                if(titleText)
+                    titleText.gameObject.SetActive(true);
+                
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(mainMenuFirstSelected.gameObject);
+            }
+        } 
+        
+        public void PopUpQuit(bool isConfirmed)
+        {
+            if (isConfirmed)
+            {
+                if (inGame)
+                {
+                    // TODO save game
+                    SceneManager.LoadScene("Scenes/StartScene"); // TODO
+                }
+                else
+                {
+                    Quit();
+                }
+            }
+        } 
+        
+        public void Quit()
+        {
+            Application.Quit(); // TODO: confirmation pop up
         }
     }
 }
