@@ -29,7 +29,7 @@ namespace Magpie
             if (input.isPressed)
             {
                 MeleeAbility meleeAbility =
-                    (MeleeAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.MeleeAbility);
+                    (MeleeAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.DashAbility); //TODO, not just dash
                 playerAttackLogic.OnMeleeInput(meleeAbility);
             }
         }

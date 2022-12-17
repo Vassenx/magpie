@@ -1,6 +1,5 @@
+using System.Collections;
 using UnityEngine;
-
-// base code from https://sharpcoderblog.com/blog/2d-platformer-character-controller
 
 namespace Magpie
 {
@@ -10,10 +9,11 @@ namespace Magpie
     {
         // Move player in 2D space
         public Vector2 speed = new Vector2(250f, 200f);
+        public float maxSpeed = 8;
 
-        private float _moveDirection = 0;
+        private bool isDashing;
+        
         public Vector2 _movementInput { get; private set; }
-
 
         protected override void Awake()
         {
@@ -30,20 +30,35 @@ namespace Magpie
 
         public void SetMovement(Vector2 value)
         {
-            _movementInput = value.normalized;
-
             if (Mathf.Approximately(value.x, 0))
             {
                 value.x = 0;
             }
+            
+            _movementInput = value.normalized;
+        }
+        
+        // Warning: completely takes over velocity
+        public IEnumerator Dash(Rigidbody2D r2d, float dashForce, Vector2 direction, float duration)
+        {
+            isDashing = true;
+            r2d.velocity = direction * dashForce;
 
-            _moveDirection = value.x;
+            yield return new WaitForSeconds(duration);
+
+            r2d.velocity = Vector3.zero;
+
+            isDashing = false;
         }
 
         protected override void FixedUpdate()
         {
-            r2d.velocity = _movementInput * speed * Time.fixedDeltaTime;
-
+            if (_movementInput.sqrMagnitude > 0.1 && !isDashing)
+            {
+                r2d.velocity += _movementInput * speed * Time.fixedDeltaTime;
+                r2d.velocity = Vector3.ClampMagnitude(r2d.velocity, maxSpeed);
+            }
+            
             base.FixedUpdate();
         }
     }

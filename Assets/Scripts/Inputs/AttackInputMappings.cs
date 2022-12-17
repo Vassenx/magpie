@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 
 namespace Magpie
 {
-    public enum AbilityInputNamesEnum { MeleeAbility, RangedAbility }
+    public enum AbilityInputNamesEnum { MeleeAbility, RangedAbility, DashAbility }
 
     public class AttackInputMappings : MonoBehaviour
     {

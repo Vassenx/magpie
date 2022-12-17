@@ -19,7 +19,7 @@ namespace Magpie
 
         public static event Action<bool> OnGroundedChanged;
 
-        public static readonly float GRAVITY_SCALE = 3f; // static for now
+        public static readonly float GRAVITY_SCALE = 0.5f; // static for now
         public bool isGrounded { get; protected set; }
         public bool facingRight { get; protected set; }
 
@@ -52,6 +52,7 @@ namespace Magpie
 
             // Change facing direction
             float xVel = aiAgent == null ? r2d.velocity.x : aiAgent.velocity.x; // rigidbody velocity not correct for ai agents in Unity
+
             if ((xVel > 0 && !facingRight) || (xVel < 0 && facingRight))
             {
                 facingRight = !facingRight;
