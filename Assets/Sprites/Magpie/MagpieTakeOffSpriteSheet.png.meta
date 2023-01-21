@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c130a3109a962534289ad0bfc81c9ce1
-      internalID: -2083092437
+      spriteID: 2b7592d77e2e2a9418d164fce4c1596f
+      internalID: -24485594
       vertices: []
       indices: 
       edges: []
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7866e048b7f71204784dc05d79694fb6
-      internalID: 250563564
+      spriteID: 8316e34c2200d654c90d5059ccd75a15
+      internalID: -315997030
       vertices: []
       indices: 
       edges: []
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c62e759f314fdc49be09663a0e7c00a
-      internalID: -1465310240
+      spriteID: 249975702a765644f9901e2bd0c62fba
+      internalID: 552024022
       vertices: []
       indices: 
       edges: []
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08ee8d0283e716c4cb6b10be8a6a1714
-      internalID: 646899772
+      spriteID: bef90d94a0af07a4e82be090719861bb
+      internalID: -1786944780
       vertices: []
       indices: 
       edges: []
@@ -203,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8dcf2bd1bd7ec54c8cae5c916a41a5b
-      internalID: 893915843
+      spriteID: 1714047725bd9df4a9bdf73b399440d1
+      internalID: 422912886
       vertices: []
       indices: 
       edges: []
@@ -224,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00d2d727129210541b043ebe0f4ff647
-      internalID: 1889459228
+      spriteID: 21aed2feb7b6ba24ab7e1a0e3148444d
+      internalID: 1353277608
       vertices: []
       indices: 
       edges: []
@@ -245,8 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b31a052159727d48be17dc740a73d36
-      internalID: 1213751528
+      spriteID: e77911af4d12b4d4387a19162959cf8b
+      internalID: 2103988711
       vertices: []
       indices: 
       edges: []
@@ -266,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af2f39b4619c8f7439e7629214e7be6d
-      internalID: -1315934502
+      spriteID: d7b5f754eb478ab479303e3e03920d1d
+      internalID: -1718956788
       vertices: []
       indices: 
       edges: []
@@ -287,8 +287,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8b8cb7ff30f6ea4ab77de85cbdcbd2e
-      internalID: 1413387327
+      spriteID: f7834410dfa4fb24596017fd2bff686b
+      internalID: 1472518389
       vertices: []
       indices: 
       edges: []
@@ -304,15 +304,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MagpieTakeOffSpriteSheet_2: -1465310240
-      MagpieTakeOffSpriteSheet_5: 1889459228
-      MagpieTakeOffSpriteSheet_3: 646899772
-      MagpieTakeOffSpriteSheet_7: -1315934502
-      MagpieTakeOffSpriteSheet_0: -2083092437
-      MagpieTakeOffSpriteSheet_4: 893915843
-      MagpieTakeOffSpriteSheet_1: 250563564
-      MagpieTakeOffSpriteSheet_6: 1213751528
-      MagpieTakeOffSpriteSheet_8: 1413387327
+      MagpieTakeOffSpriteSheet_2: 552024022
+      MagpieTakeOffSpriteSheet_5: 1353277608
+      MagpieTakeOffSpriteSheet_3: -1786944780
+      MagpieTakeOffSpriteSheet_7: -1718956788
+      MagpieTakeOffSpriteSheet_0: -24485594
+      MagpieTakeOffSpriteSheet_4: 422912886
+      MagpieTakeOffSpriteSheet_1: -315997030
+      MagpieTakeOffSpriteSheet_6: 2103988711
+      MagpieTakeOffSpriteSheet_8: 1472518389
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

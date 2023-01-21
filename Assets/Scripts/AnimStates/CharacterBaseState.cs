@@ -13,6 +13,15 @@ namespace Magpie
         protected Rigidbody2D rb;
         protected CharacterController2D controller;
 
+        public virtual PriorityLevel Priority => PriorityLevel.med;// All states default to 0 unless they override it.
+
+        public enum PriorityLevel
+        {
+            low,
+            med,
+            high
+        };
+        
         public virtual bool CanTurn => true;
 
 #if UNITY_EDITOR
@@ -29,6 +38,15 @@ namespace Magpie
         }
 #endif
 
+        public override bool CanExitState
+        {
+            get
+            {
+                var nextState = this.GetNextState();
+                return nextState.Priority >= Priority;
+            }
+        }
+        
         protected virtual void Awake()
         {
         }

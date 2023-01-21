@@ -11,7 +11,7 @@ namespace Magpie
         {
             base.Awake();
 
-            CharacterController2D.OnGroundedChanged += (bool isGrounded) =>
+            controller.OnGroundedChanged += (bool isGrounded) =>
             {
                 if (!isGrounded)
                 {

@@ -1,4 +1,5 @@
 using System.Collections;
+using Animancer;
 using UnityEngine;
 
 namespace Magpie
@@ -8,6 +9,8 @@ namespace Magpie
     {
         [SerializeField] private Rigidbody2D playerRb;
         [SerializeField] private GameObject[] vCams = new GameObject[2];
+        [SerializeField] private PlayerController2D controller;
+        [SerializeField] private DeadState deadAnimState;
         
         public float turnSpeed = 5;
         public float gravityFallSpeed = 25f;
@@ -32,6 +35,14 @@ namespace Magpie
             shouldRotate = true;
             
             playerRb.constraints = RigidbodyConstraints2D.FreezePositionX;
+            
+            controller.OnGroundedChanged += (bool isGrounded) =>
+            {
+                if (isGrounded)
+                {
+                    controller.characterStateMachine.ForceSetState(deadAnimState);
+                }
+            };
         }
 
         void FixedUpdate()
@@ -63,6 +74,14 @@ namespace Magpie
         {
             yield return new WaitForSeconds(seconds);
             Physics2D.gravity = new Vector2(0, gravityFallSpeed);
+            
+            //StartCoroutine(WaitThenAnimate(1));
         }
+        
+        /*IEnumerator WaitThenAnimate(float seconds = 4f)
+        {
+            yield return new WaitForSeconds(seconds);
+            controller.characterStateMachine.ForceSetState(deadAnimState);
+        }*/
     }
 }

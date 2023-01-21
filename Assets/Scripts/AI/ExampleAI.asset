@@ -20,6 +20,7 @@ MonoBehaviour:
   - rid: 7391294580866416646
   - rid: 7391294580866416647
   - rid: 7391294580866416648
+  - rid: 8465100532809465856
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
@@ -49,7 +50,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: dcbf2da48ee093046ac786b28c386d35
-        position: {x: 25, y: 292.8}
+        position: {x: -39.200012, y: 292.8}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           curTarget: {fileID: 0}
@@ -62,7 +63,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 753e478e35a32504aa7b4f71291222f3
-        position: {x: -38.799988, y: 180.79999}
+        position: {x: -39.200012, y: 148.4}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           curTarget: {fileID: 0}
@@ -71,13 +72,14 @@ MonoBehaviour:
         children:
         - rid: 7391294580866416647
         - rid: 7391294580866416645
+        - rid: 8465100532809465856
     - rid: 7391294580866416647
       type: {class: MoveToTargetAction, ns: Magpie, asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: 8a5d1b9d590de624b995a42dfd1c83fc
-        position: {x: -156.79999, y: 292.8}
+        position: {x: -224.79999, y: 292.8}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           curTarget: {fileID: 0}
@@ -91,7 +93,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: bb1ae193b9f8afc42a26554d0d478d77
-        position: {x: -38.400024, y: 92}
+        position: {x: -39.19995, y: 28}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           curTarget: {fileID: 0}
@@ -101,3 +103,16 @@ MonoBehaviour:
           rid: 7391294580866416646
         restartOnSuccess: 1
         restartOnFailure: 1
+    - rid: 8465100532809465856
+      type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 1f4d87acf024b7249bccce42186b0b45
+        position: {x: 148.59998, y: 292.8}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          curTarget: {fileID: 0}
+        description: 
+        drawGizmos: 0
+        duration: 5

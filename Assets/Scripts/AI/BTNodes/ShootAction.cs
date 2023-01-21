@@ -12,6 +12,10 @@ namespace Magpie
         
         protected override void OnStart()
         {
+            if (rangedAbility == null)
+            {
+                rangedAbility = context.enemyFighter.GetComponentInChildren<RangedAbility>(); // TODO: this is terrible, use the projectilesettings & in the BT from Assets/
+            }
             if(rangedAbility != null)
                 context.aiController.attackLogic.OnRangedInput(rangedAbility);
         }

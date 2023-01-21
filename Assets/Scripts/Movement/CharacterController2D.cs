@@ -17,7 +17,7 @@ namespace Magpie
         private CapsuleCollider2D mainCollider;
         [SerializeField] private SpriteRenderer sprite;
 
-        public static event Action<bool> OnGroundedChanged;
+        public event Action<bool> OnGroundedChanged;
 
         public static readonly float GRAVITY_SCALE = 0.5f; // static for now
         public bool isGrounded { get; protected set; }

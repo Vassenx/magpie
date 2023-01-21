@@ -29,7 +29,7 @@ namespace Magpie
             if (input.isPressed)
             {
                 MeleeAbility meleeAbility =
-                    (MeleeAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.DashAbility); //TODO, not just dash
+                    (MeleeAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.MeleeAbility); //TODO, not just dash
                 playerAttackLogic.OnMeleeInput(meleeAbility);
             }
         }
@@ -41,6 +41,16 @@ namespace Magpie
                 RangedAbility rangedAbility =
                     (RangedAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.RangedAbility);
                 playerAttackLogic.OnRangedInput(rangedAbility);
+            }
+        }
+
+        public void OnDash(InputValue input)
+        {
+            if (input.isPressed)
+            {
+                MeleeAbility dashAbility =
+                    (MeleeAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.DashAbility);
+                playerAttackLogic.OnMeleeInput(dashAbility);
             }
         }
     }

@@ -13,7 +13,7 @@ namespace Magpie
 
             Land.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
 
-            CharacterController2D.OnGroundedChanged += (bool isGrounded) =>
+            controller.OnGroundedChanged += (bool isGrounded) =>
             {
                 if (isGrounded)
                 {

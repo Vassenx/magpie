@@ -18,6 +18,9 @@ namespace Magpie
         public CharacterController2D controller { get; protected set; }
         public Transform curTarget; // TODO
 
+        public DeadState deadState;
+        public KnockbackState knockbackState;
+
         [HideInInspector] public float curHealth { get; protected set; }
         [HideInInspector] public bool inCombat { get; protected set; } // TODO: change to false (player vs enemy
         [HideInInspector] public float lastHitTime { get; protected set; }
@@ -79,9 +82,9 @@ namespace Magpie
             Mathf.Clamp(curHealth, 0, stats.maxHealth);
             HealthChangeEvent.Invoke(this, curHealth, stats.maxHealth);
 
-            if (animator)
+            if (knockbackState)
             {
-                animator.SetTrigger("Hurt");
+                controller.characterStateMachine.ForceSetState(knockbackState);
             }
         }
 
@@ -102,9 +105,9 @@ namespace Magpie
                 agent.enabled = false;
             }
 
-            if (animator)
+            if (deadState)
             {
-                animator.SetTrigger("Die");
+                controller.characterStateMachine.ForceSetState(deadState);
             }
         }
     }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dae97f6f33b7282448759aea60b74f72
+guid: d5f88c6a18e45cb458f5c7a253a8d7ba
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,97 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_0
+      name: Wasp 16x16 Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b25dfef7e4d0649baff36827101e74
+      internalID: -277712646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wasp 16x16 Sprite Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b76e23aa7d710499a85e98bf48ab03
+      internalID: 1423589325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wasp 16x16 Sprite Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52396464049a76241bcd9cfae9781a74
+      internalID: 1986773618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wasp 16x16 Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2b8c4a9be73eef48baedb74a8ee659a
+      internalID: 1129756861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wasp 16x16 Sprite Sheet_4
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +203,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25c9f593e90592c4dba21a3dd8532469
-      internalID: -578073400
+      spriteID: f80912b17f11f4e45ab1051d03c8a34f
+      internalID: -1466724163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_1
+      name: Wasp 16x16 Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74996e0450ab2748bff600146958435
+      internalID: 1420531194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wasp 16x16 Sprite Sheet_6
       rect:
         serializedVersion: 2
         x: 32
         y: 32
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +245,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ff2104c225b27f4b8c1f2e072ce8341
-      internalID: 1666507750
+      spriteID: 2f5537d5002186245942b9f2aa67bacc
+      internalID: 625627201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_2
+      name: Wasp 16x16 Sprite Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2786307ae02ddd34389400227e04ace1
+      internalID: 1645654124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wasp 16x16 Sprite Sheet_8
       rect:
         serializedVersion: 2
         x: 64
         y: 32
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +287,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe2aa7d29d298ee47a456e5f71d03dc5
-      internalID: -1848131834
+      spriteID: e4eba4fab365a2e4daf5786268502f96
+      internalID: 1422057202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_3
+      name: Wasp 16x16 Sprite Sheet_9
       rect:
         serializedVersion: 2
-        x: 96
+        x: 80
         y: 32
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +308,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df649eb3559b61441addf65d69f9a47f
-      internalID: 890075407
+      spriteID: f23612964efe7924ba4927632879576e
+      internalID: -23509966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_4
+      name: Wasp 16x16 Sprite Sheet_10
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
-        width: 32
-        height: 32
+        x: 0
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +329,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b73318275a6fa01408f5e14dca0b045d
-      internalID: -888339194
+      spriteID: 547d9e3bc98571547acee62091efa926
+      internalID: 2097686367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_5
+      name: Wasp 16x16 Sprite Sheet_11
       rect:
         serializedVersion: 2
-        x: 160
-        y: 32
-        width: 32
-        height: 32
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,104 +350,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c63ed829efc0a7438fce80821be162f
-      internalID: 1067417465
+      spriteID: fd09c83eaeb3a94448b460ea858e0f46
+      internalID: 1057175989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2aa1f2e517f40da4996c13c9211bfb5a
-      internalID: -716619060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc98e1ce17d1ebf4aa08b491f45befd3
-      internalID: 378479781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17344d8dffb4ddc4da64e72936fd0b92
-      internalID: 116367592
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_9
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe424e26077c2654ab413dbc6977534b
-      internalID: 1893887295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_10
+      name: Wasp 16x16 Sprite Sheet_12
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,20 +371,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b2c11020d3af3f44ada28e7a6d0192e
-      internalID: 1469916387
+      spriteID: f0baae0ba145b7c4093d8d61ec622756
+      internalID: 1633010911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_11
+      name: Wasp 16x16 Sprite Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e798109e68a7c7040a987dd71929ac98
+      internalID: 664446801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wasp 16x16 Sprite Sheet_14
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,20 +413,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71ef83025ed57e24eafa466a74167c9a
-      internalID: 417308223
+      spriteID: 292628c219567bc4791010c60a30c3d4
+      internalID: -1548029912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_12
+      name: Wasp 16x16 Sprite Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdcafc77ae3a9b1438c889d3470e1b59
+      internalID: 1045976794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wasp 16x16 Sprite Sheet_16
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,71 +455,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d091db275bb02aa46aa59e0b9b2a25d5
-      internalID: 2061180283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_13
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 706d023849f456042a2b936afc59edf7
-      internalID: 1256872930
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_14
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eeedf3c0923bb90458ed45eba2b0fec8
-      internalID: -386225772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagpieWalkSpriteSheet_15
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3e9bcaa57169484699b96d3378b3bd2
-      internalID: 523925265
+      spriteID: 9849f62236f258b458a777b96038989a
+      internalID: -1650665383
       vertices: []
       indices: 
       edges: []
@@ -451,22 +472,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MagpieWalkSpriteSheet_5: 1067417465
-      MagpieWalkSpriteSheet_7: 378479781
-      MagpieWalkSpriteSheet_15: 523925265
-      MagpieWalkSpriteSheet_2: -1848131834
-      MagpieWalkSpriteSheet_4: -888339194
-      MagpieWalkSpriteSheet_3: 890075407
-      MagpieWalkSpriteSheet_1: 1666507750
-      MagpieWalkSpriteSheet_12: 2061180283
-      MagpieWalkSpriteSheet_14: -386225772
-      MagpieWalkSpriteSheet_10: 1469916387
-      MagpieWalkSpriteSheet_11: 417308223
-      MagpieWalkSpriteSheet_6: -716619060
-      MagpieWalkSpriteSheet_0: -578073400
-      MagpieWalkSpriteSheet_9: 1893887295
-      MagpieWalkSpriteSheet_8: 116367592
-      MagpieWalkSpriteSheet_13: 1256872930
+      Wasp 16x16 Sprite Sheet_6: 625627201
+      Wasp 16x16 Sprite Sheet_7: 1645654124
+      Wasp 16x16 Sprite Sheet_15: 1045976794
+      Wasp 16x16 Sprite Sheet_5: 1420531194
+      Wasp 16x16 Sprite Sheet_0: -277712646
+      Wasp 16x16 Sprite Sheet_11: 1057175989
+      Wasp 16x16 Sprite Sheet_10: 2097686367
+      Wasp 16x16 Sprite Sheet_3: 1129756861
+      Wasp 16x16 Sprite Sheet_1: 1423589325
+      Wasp 16x16 Sprite Sheet_2: 1986773618
+      Wasp 16x16 Sprite Sheet_16: -1650665383
+      Wasp 16x16 Sprite Sheet_9: -23509966
+      Wasp 16x16 Sprite Sheet_4: -1466724163
+      Wasp 16x16 Sprite Sheet_13: 664446801
+      Wasp 16x16 Sprite Sheet_12: 1633010911
+      Wasp 16x16 Sprite Sheet_8: 1422057202
+      Wasp 16x16 Sprite Sheet_14: -1548029912
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

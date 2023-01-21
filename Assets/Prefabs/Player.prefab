@@ -92,10 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbccbe7bb9178948818474fbdfc07b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputNames: 0000000001000000
+  inputNames: 000000000100000002000000
   defaultAbilities:
   - {fileID: 3966827193754344328}
-  - {fileID: 3966827193754344328}
+  - {fileID: 3966827193266654593}
+  - {fileID: 3966827193266654594}
 --- !u!114 &3966827192605245959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +113,8 @@ MonoBehaviour:
   isHittable: 1
   animator: {fileID: 3966827194621494346}
   sprite: {fileID: 3966827194621494348}
+  curTarget: {fileID: 0}
+  deadState: {fileID: 0}
 --- !u!114 &3966827192605245958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7d622f1a3e52b4283f8a81195662e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFighter: {fileID: 3966827192605245959}
   abilityAnimState: {fileID: 3966827194621494341}
 --- !u!114 &3966827192605245955
 MonoBehaviour:
@@ -169,7 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 3966827194621494348}
-  speed: {x: 250, y: 200}
+  speed: {x: 200, y: 500}
+  maxSpeed: 4
 --- !u!114 &3966827192605246206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +213,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3966827193754344331}
   - component: {fileID: 3966827193754344328}
+  - component: {fileID: 3966827193266654593}
+  - component: {fileID: 3966827193266654594}
   m_Layer: 0
   m_Name: PlayerAbilities
   m_TagString: Untagged
@@ -244,26 +249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b2f6e7314ff8845ae9ebb89a9871cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityName: 
   flyingAnimClip:
     _FadeDuration: 0.25
     _Events:
-      _NormalizedTimes:
-      - NaN
-      _Callbacks:
-      - m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 3966827192605245958}
-            m_TargetAssemblyTypeName: PlayerAttackLogic, Assembly-CSharp
-            m_MethodName: AttackDone
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 3966827193754344328}
-              m_ObjectArgumentAssemblyTypeName: MeleeAbility, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+      _NormalizedTimes: []
+      _Callbacks: []
       _Names: []
     _Clip: {fileID: 7400000, guid: 1ed0e04cf2828c14f91fe5b2689fe9b3, type: 2}
     _Speed: 1
@@ -288,23 +279,8 @@ MonoBehaviour:
   groundAnimClip:
     _FadeDuration: 0.25
     _Events:
-      _NormalizedTimes:
-      - NaN
-      _Callbacks:
-      - m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 3966827192605245958}
-            m_TargetAssemblyTypeName: PlayerAttackLogic, Assembly-CSharp
-            m_MethodName: AttackDone
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 3966827193754344328}
-              m_ObjectArgumentAssemblyTypeName: MeleeAbility, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+      _NormalizedTimes: []
+      _Callbacks: []
       _Names: []
     _Clip: {fileID: 7400000, guid: d5ea3c3ac077d4c418b938de422d7c1e, type: 2}
     _Speed: 1
@@ -334,9 +310,196 @@ MonoBehaviour:
       - {x: 0.1766686, y: -0.039617393}
       - {x: 0.17298685, y: 0.030682294}
       - {x: 0.095737524, y: 0.031054532}
-  fighter: {fileID: 0}
+  fighter: {fileID: 3966827192605245959}
   controller: {fileID: 3966827192605245953}
-  attackLogic: {fileID: 0}
+  attackLogic: {fileID: 3966827192605245958}
+--- !u!114 &3966827193266654593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966827193754344330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a376cfdab6748418e4a3b32cc925a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 
+  flyingAnimClip:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes:
+      - 0.33333334
+      - NaN
+      _Callbacks:
+      - m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 3966827193266654593}
+            m_TargetAssemblyTypeName: RangedAbility, Assembly-CSharp
+            m_MethodName: ShootProjectile
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 1ed0e04cf2828c14f91fe5b2689fe9b3, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+    _Hits: []
+  groundAnimClip:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes:
+      - 0.33333334
+      - NaN
+      _Callbacks:
+      - m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 3966827193266654593}
+            m_TargetAssemblyTypeName: RangedAbility, Assembly-CSharp
+            m_MethodName: ShootProjectile
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      _Names: []
+    _Clip: {fileID: 7400000, guid: d5ea3c3ac077d4c418b938de422d7c1e, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+    _Hits: []
+  fighter: {fileID: 3966827192605245959}
+  controller: {fileID: 3966827192605245953}
+  attackLogic: {fileID: 3966827192605245958}
+  projectileSettings: {fileID: 11400000, guid: adf17ccf5abe4bc4a9db5f93d27874a0, type: 2}
+--- !u!114 &3966827193266654594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966827193754344330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d48c4476aac8ea4ca99818f44194a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Dash
+  flyingAnimClip:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes:
+      - 0.33333334
+      - NaN
+      _Callbacks:
+      - m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 3966827193266654594}
+            m_TargetAssemblyTypeName: Magpie.DashAbility, Assembly-CSharp
+            m_MethodName: Dash
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 1ed0e04cf2828c14f91fe5b2689fe9b3, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+    _Hits:
+    - _StartTime: 0.16666667
+      _EndTime: 0.25
+      _Damage: 5
+      _Area:
+      - {x: 0.10492568, y: -0.05934766}
+      - {x: 0.18711582, y: -0.04002139}
+      - {x: 0.19463159, y: 0.02821087}
+      - {x: 0.100631, y: 0.02284246}
+    - _StartTime: 0.25
+      _EndTime: 0.33333334
+      _Damage: 5
+      _Area:
+      - {x: 0.09311518, y: -0.053979248}
+      - {x: 0.16134745, y: -0.047537167}
+      - {x: 0.1645685, y: 0.024989825}
+      - {x: 0.100631, y: 0.02284246}
+    - _StartTime: 0.33333334
+      _EndTime: 0.41666666
+      _Damage: 2
+      _Area:
+      - {x: 0.06949417, y: -0.046463475}
+      - {x: 0.12806332, y: -0.032505617}
+      - {x: 0.13987382, y: 0.03465296}
+      - {x: 0.05231531, y: 0.04324242}
+  groundAnimClip:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes:
+      - 0.33333334
+      - NaN
+      _Callbacks:
+      - m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 3966827193266654594}
+            m_TargetAssemblyTypeName: Magpie.DashAbility, Assembly-CSharp
+            m_MethodName: Dash
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      _Names: []
+    _Clip: {fileID: 7400000, guid: d5ea3c3ac077d4c418b938de422d7c1e, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+    _Hits:
+    - _StartTime: 0.16666667
+      _EndTime: 0.25
+      _Damage: 5
+      _Area:
+      - {x: 0.1041619, y: -0.06033382}
+      - {x: 0.18913709, y: -0.05412644}
+      - {x: 0.18448155, y: 0.021537662}
+      - {x: 0.0979545, y: 0.030848756}
+    - _StartTime: 0.25
+      _EndTime: 0.33333334
+      _Damage: 5
+      _Area:
+      - {x: 0.08217016, y: -0.05626127}
+      - {x: 0.16307281, y: -0.0500539}
+      - {x: 0.16004626, y: 0.021537662}
+      - {x: 0.08166432, y: 0.027590714}
+    - _StartTime: 0.33333334
+      _EndTime: 0.41666666
+      _Damage: 2
+      _Area:
+      - {x: 0.08950074, y: -0.044043634}
+      - {x: 0.17773397, y: -0.030505678}
+      - {x: 0.17959447, y: 0.035384316}
+      - {x: 0.090623915, y: 0.034921296}
+  fighter: {fileID: 3966827192605245959}
+  controller: {fileID: 3966827192605245953}
+  attackLogic: {fileID: 3966827192605245958}
+  dashForce: 30
+  duration: 0.05
 --- !u!1 &3966827194621494351
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +518,7 @@ GameObject:
   - component: {fileID: 3966827194621494343}
   - component: {fileID: 3966827194621494342}
   - component: {fileID: 3966827194621494341}
+  - component: {fileID: 3966827193266654609}
   m_Layer: 3
   m_Name: PlayerModel
   m_TagString: HurtBox
@@ -371,7 +535,7 @@ Transform:
   m_GameObject: {fileID: 3966827194621494351}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3966827192605245965}
@@ -598,6 +762,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c0b5007106748498bc4a0de3fc75d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3966827193266654609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966827194621494351}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc32eba35d37464d8d4153c6ba158b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Die:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: f2c20863b19091141897d9438255d54b, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+  DeadLoop:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 06d795cfab73e3d41beaef4296e5e438, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
 --- !u!1001 &8478205918949691463
 PrefabInstance:
   m_ObjectHideFlags: 0

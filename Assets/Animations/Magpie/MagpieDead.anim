@@ -6,8 +6,8 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MagpieDie
-  serializedVersion: 7
+  m_Name: MagpieDead
+  serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -69,7 +69,6 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
-      isIntCurve: 0
     pptrCurveMapping:
     - {fileID: 523913660, guid: 7c90d32f66ef21148aaff852d7754de5, type: 3}
     - {fileID: 222114979, guid: 7c90d32f66ef21148aaff852d7754de5, type: 3}

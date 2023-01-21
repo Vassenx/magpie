@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 296146aef7f66ac41afedcbb4825f0cf
-      internalID: -143633164
+      spriteID: eaf198bd0daa28345ad34a55abee6f6f
+      internalID: -1711422251
       vertices: []
       indices: 
       edges: []
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3552257f8621e274282bd2df458217d2
-      internalID: 20004809
+      spriteID: 3e21ba123cbce3c4fb3608d13648542d
+      internalID: -699448532
       vertices: []
       indices: 
       edges: []
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce316453f86f63a4fa3578b2c4bf1f27
-      internalID: 484866260
+      spriteID: 3a8bf07d1171fb14ba9df390dae3aacd
+      internalID: -2095637796
       vertices: []
       indices: 
       edges: []
@@ -178,9 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MagpieLandSpriteSheet_2: 484866260
-      MagpieLandSpriteSheet_1: 20004809
-      MagpieLandSpriteSheet_0: -143633164
+      MagpieLandSpriteSheet_2: -2095637796
+      MagpieLandSpriteSheet_1: -699448532
+      MagpieLandSpriteSheet_0: -1711422251
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
