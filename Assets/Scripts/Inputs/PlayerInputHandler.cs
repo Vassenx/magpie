@@ -1,14 +1,18 @@
-using Animancer.FSM;
+using System.Collections;
+using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Magpie
 {
+
     public class PlayerInputHandler : MonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] private PlayerController2D playerController;
-        [SerializeField] private AttackInputMappings inputMappings;
         [SerializeField] private AttackLogic playerAttackLogic;
+        [SerializeField] private PlayerFighter fighter;
 
         [SerializeField] private MovementState movementAnimState;
 
@@ -17,7 +21,7 @@ namespace Magpie
             Vector2 inputVec = input.Get<Vector2>();
             playerController.SetMovement(inputVec);
 
-            // anim
+            // set anim
             if (!Mathf.Approximately(inputVec.x, 0) || !Mathf.Approximately(inputVec.y, 0))
             {
                 movementAnimState.OwnerStateMachine.TrySetState(movementAnimState);
@@ -28,9 +32,7 @@ namespace Magpie
         {
             if (input.isPressed)
             {
-                MeleeAbility meleeAbility =
-                    (MeleeAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.MeleeAbility); //TODO, not just dash
-                playerAttackLogic.OnMeleeInput(meleeAbility);
+                playerAttackLogic.OnAttackInput(fighter.curMeleeAbility);
             }
         }
 
@@ -38,9 +40,7 @@ namespace Magpie
         {
             if (input.isPressed)
             {
-                RangedAbility rangedAbility =
-                    (RangedAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.RangedAbility);
-                playerAttackLogic.OnRangedInput(rangedAbility);
+                playerAttackLogic.OnAttackInput(fighter.curRangedAbility);
             }
         }
 
@@ -48,9 +48,7 @@ namespace Magpie
         {
             if (input.isPressed)
             {
-                MeleeAbility dashAbility =
-                    (MeleeAbility)inputMappings.GetCurAssociatedAttack(AbilityInputNamesEnum.DashAbility);
-                playerAttackLogic.OnMeleeInput(dashAbility);
+                playerAttackLogic.OnAttackInput(fighter.curDashAbility);
             }
         }
     }

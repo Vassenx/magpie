@@ -46,6 +46,7 @@ namespace TheKiwiCoder {
             });
         }
 
+        public virtual void OnValidateNode() { } // to update in editor pre-runtime
         public virtual void OnDrawGizmos() { }
 
         protected abstract void OnStart();

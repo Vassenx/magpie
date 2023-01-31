@@ -54,9 +54,9 @@ MonoBehaviour:
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           curTarget: {fileID: 0}
-        description: 
+        description: Temp2
         drawGizmos: 0
-        rangedAbility: {fileID: 0}
+        abilityName: Temp2
     - rid: 7391294580866416646
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -79,7 +79,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 8a5d1b9d590de624b995a42dfd1c83fc
-        position: {x: -224.79999, y: 292.8}
+        position: {x: -227.4, y: 292.8}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           curTarget: {fileID: 0}
@@ -115,4 +115,4 @@ MonoBehaviour:
           curTarget: {fileID: 0}
         description: 
         drawGizmos: 0
-        duration: 5
+        duration: 3

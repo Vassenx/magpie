@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using PlatformerGameKit;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,14 +6,17 @@ namespace Magpie
 {
     public partial class Fighter : MonoBehaviour
     {
-        [Header("Fighter Stats Info")] [SerializeField]
-        protected FighterStats stats;
+        [Header("Fighter Stats Info")]
+        [SerializeField] protected FighterStats stats;
 
+        [Header("Other")]
         [SerializeField] protected bool isHittable = true;
+        public Transform curTarget; // TODO
+
+        [Header("Components")]
         [SerializeField] protected Animator animator;
         [SerializeField] protected SpriteRenderer sprite;
         public CharacterController2D controller { get; protected set; }
-        public Transform curTarget; // TODO
 
         public DeadState deadState;
         public KnockbackState knockbackState;

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using TheKiwiCoder;
-using Unity.VisualScripting;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
@@ -12,23 +12,60 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Magpie
 {
+    [RequireComponent(typeof(BehaviourTreeRunner))]
     public class EnemyFighter : Fighter
     {
         [Header("Aggro")] 
         [SerializeField] private float radius = 10f;
         [SerializeField] private float fovAngleDeg = 120f;
         [SerializeField] private LayerMask aggroLayerMask;
-        [ValueDropdown("GetAbilities")][SerializeField] private Ability rangedAbility;
-
+        [SerializeField] private float deAggroTimer = 5f; // time until give up trying when target null
+        private float startAggroTime;
+        
+        [Header("AI")]
         [SerializeField] private BehaviourTreeRunner btreeRunner;
+        
+        [Header("Abilities")]
+        [SerializeField] private Ability[] _availableAbilities;
+        public Ability[] availableAbilties { get { return _availableAbilities; } }
+
+        private void Start()
+        {
+            if (_availableAbilities.IsNullOrEmpty())
+            {
+                _availableAbilities = GetComponentsInChildren<Ability>();
+            }
+        }
         
         private void Update() // fixedupdate?
         {
-            Transform player = FindPlayer();
-            curTarget = player;
-            if (btreeRunner != null)
+            if (curTarget == null)
             {
-                btreeRunner.tree.blackboard.curTarget = curTarget;
+                TryAggro();  
+            }
+            else
+            {
+                TryDeAggro();
+            }
+        }
+
+        private void TryAggro()
+        {
+            curTarget = FindPlayer();
+            btreeRunner.tree.blackboard.curTarget = curTarget;
+
+            if (curTarget != null)
+            {
+                startAggroTime = Time.time;
+            }
+        }
+        
+        public void TryDeAggro()
+        {
+            if ((Time.time - startAggroTime) > deAggroTimer)
+            {
+                curTarget = null;
+                btreeRunner.tree.blackboard.curTarget = null;
             }
         }
 
@@ -46,7 +83,7 @@ namespace Magpie
 
             return null;
         }
-         
+
         public void FaceTarget()
         {
             Vector3 direction = (curTarget.position - transform.position).normalized;
@@ -54,13 +91,6 @@ namespace Magpie
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
         
-                
-        private IEnumerable GetAbilities()
-        {
-            return GetComponentsInChildren<Ability>()
-                .Select(x => new ValueDropdownItem(x.abilityName, x));
-        }
-
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;

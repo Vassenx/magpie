@@ -30,6 +30,13 @@ namespace TheKiwiCoder {
 
             // Property field
             PropertyField field = new PropertyField();
+            
+            Node node = nodeProperty.managedReferenceValue as Node;
+            if (node != null)
+            {
+                node.OnValidateNode();
+            }
+            
             field.label = nodeProperty.managedReferenceValue.GetType().ToString();
             field.BindProperty(nodeProperty);
             Add(field);

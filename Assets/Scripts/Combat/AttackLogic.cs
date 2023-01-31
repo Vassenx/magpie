@@ -11,7 +11,7 @@ namespace Magpie
     {
         private bool canCombo = true;
         private bool inAttack = false;
-        private MeleeAbility _prevMeleeAttack;
+        private Ability _prevAttack;
 
         private LayerMask enemyLayerMask; // TODO not in use, add to hitbox stuff, also its not specific to player
 
@@ -28,32 +28,16 @@ namespace Magpie
             enemyContactFilter.SetLayerMask(enemyLayerMask);
         }
 
-        public void OnMeleeInput(MeleeAbility meleeAbility)
+        public void OnAttackInput(Ability ability)
         {
             if (!inAttack)
             {
-                _prevMeleeAttack = meleeAbility; // TODO, below try set state?
+                _prevAttack = ability; // TODO, below try set state?
 
                 canCombo = true;
                 inAttack = true;
 
-                abilityAnimState.SetAnim(meleeAbility.GetAnim());
-                abilityAnimState.OwnerStateMachine.TrySetState(abilityAnimState);
-            }
-            else
-            {
-                // MeleeCombo(attack);
-            }
-        }
-
-        public void OnRangedInput(RangedAbility rangedAbility)
-        {
-            if (!inAttack)
-            {
-                canCombo = true;
-                inAttack = true;
-
-                abilityAnimState.SetAnim(rangedAbility.GetAnim());
+                abilityAnimState.SetAnim(ability.GetAnim());
                 abilityAnimState.OwnerStateMachine.TrySetState(abilityAnimState);
             }
             else
@@ -67,7 +51,7 @@ namespace Magpie
         // ANIMATION EVENT
         public void AttackDone(Ability ability)
         {
-            if (ability == _prevMeleeAttack)
+            if (ability == _prevAttack)
             {
                 inAttack = false;
             }

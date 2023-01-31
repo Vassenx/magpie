@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Magpie
 {
+    [System.Serializable]
     public class RangedAbility : Ability
     {
         [SerializeField] private ProjectileSettings projectileSettings;

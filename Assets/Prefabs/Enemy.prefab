@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 463553654}
   - component: {fileID: 463553655}
+  - component: {fileID: 1969428165}
   m_Layer: 0
   m_Name: Abilities
   m_TagString: Untagged
@@ -44,13 +45,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a376cfdab6748418e4a3b32cc925a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityName: Temp2
+  flyingAnimClip:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes:
+      - 0.559726
+      - NaN
+      _Callbacks:
+      - m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 463553655}
+            m_TargetAssemblyTypeName: Magpie.RangedAbility, Assembly-CSharp
+            m_MethodName: ShootProjectile
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 7055c7dfcf2e91b41bb0cbe913310b50, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+    _Hits: []
+  groundAnimClip:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes:
+      - 0.5720548
+      - NaN
+      _Callbacks:
+      - m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 463553655}
+            m_TargetAssemblyTypeName: Magpie.RangedAbility, Assembly-CSharp
+            m_MethodName: ShootProjectile
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 7055c7dfcf2e91b41bb0cbe913310b50, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+    _Hits: []
+  fighter: {fileID: 80573633}
+  controller: {fileID: 6729461846227923164}
+  attackLogic: {fileID: 80573623}
+  projectileSettings: {fileID: 11400000, guid: adf17ccf5abe4bc4a9db5f93d27874a0, type: 2}
+--- !u!114 &1969428165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463553653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b2f6e7314ff8845ae9ebb89a9871cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Temp1
   flyingAnimClip:
     _FadeDuration: 0.25
     _Events:
       _NormalizedTimes: []
       _Callbacks: []
       _Names: []
-    _Clip: {fileID: 7400000, guid: 1ed0e04cf2828c14f91fe5b2689fe9b3, type: 2}
+    _Clip: {fileID: 7400000, guid: 7055c7dfcf2e91b41bb0cbe913310b50, type: 2}
     _Speed: 1
     _NormalizedStartTime: NaN
     _Hits: []
@@ -60,14 +131,13 @@ MonoBehaviour:
       _NormalizedTimes: []
       _Callbacks: []
       _Names: []
-    _Clip: {fileID: 7400000, guid: d5ea3c3ac077d4c418b938de422d7c1e, type: 2}
+    _Clip: {fileID: 7400000, guid: 7055c7dfcf2e91b41bb0cbe913310b50, type: 2}
     _Speed: 1
     _NormalizedStartTime: NaN
     _Hits: []
-  fighter: {fileID: 0}
+  fighter: {fileID: 80573633}
   controller: {fileID: 6729461846227923164}
   attackLogic: {fileID: 80573623}
-  projectileSettings: {fileID: 11400000, guid: adf17ccf5abe4bc4a9db5f93d27874a0, type: 2}
 --- !u!1 &6729461845961531842
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,8 +153,11 @@ GameObject:
   - component: {fileID: 6729461845961531848}
   - component: {fileID: 117061346}
   - component: {fileID: 117061352}
+  - component: {fileID: 1454116926}
+  - component: {fileID: 1454116927}
+  - component: {fileID: 1454116935}
   m_Layer: 0
-  m_Name: EnemyModel
+  m_Name: WaspModel
   m_TagString: HurtBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 6729461845961531842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6729461846227923159}
@@ -146,12 +219,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1770168314, guid: 72a30a758e30e1f48a504bc128c6113a, type: 3}
+  m_Sprite: {fileID: -277712646, guid: d5f88c6a18e45cb458f5c7a253a8d7ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -209,7 +282,7 @@ MonoBehaviour:
       _NormalizedTimes: []
       _Callbacks: []
       _Names: []
-    _Clip: {fileID: 7400000, guid: 4a879fc6c95ce2b4cab039e872ad0112, type: 2}
+    _Clip: {fileID: 7400000, guid: cd4557fab6c8f9943b8aa392e271a02b, type: 2}
     _Speed: 1
     _NormalizedStartTime: NaN
   IdleFly:
@@ -218,7 +291,7 @@ MonoBehaviour:
       _NormalizedTimes: []
       _Callbacks: []
       _Names: []
-    _Clip: {fileID: 7400000, guid: 4a879fc6c95ce2b4cab039e872ad0112, type: 2}
+    _Clip: {fileID: 7400000, guid: cd4557fab6c8f9943b8aa392e271a02b, type: 2}
     _Speed: 1
     _NormalizedStartTime: NaN
 --- !u!114 &117061346
@@ -245,6 +318,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22e28282464a4e40bdaa423184c5b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1454116926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729461845961531842}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf387169e37dc0b488b6d12d837a6216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walk:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: cd4557fab6c8f9943b8aa392e271a02b, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+  fly:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: cd4557fab6c8f9943b8aa392e271a02b, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+  fall:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: cd4557fab6c8f9943b8aa392e271a02b, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+--- !u!114 &1454116927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729461845961531842}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc32eba35d37464d8d4153c6ba158b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Die:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 980b2fa2437770748bc51c3d2b7c47bb, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+  DeadLoop:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 94f0aa09680d3674ba3a9a1898489ad5, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+--- !u!114 &1454116935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729461845961531842}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dbb8b3c54ea9641968e4c523022da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Knockback:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 350a08203f2a5624fa70f41ef80db451, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
 --- !u!1 &6729461846227923156
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +426,7 @@ GameObject:
   - component: {fileID: 6729461846227923164}
   - component: {fileID: 80573623}
   - component: {fileID: 80573633}
+  - component: {fileID: 1969428164}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -427,15 +591,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 6729461846227923154}
   isHittable: 1
+  curTarget: {fileID: 0}
   animator: {fileID: 6729461845961531849}
   sprite: {fileID: 6729461845961531852}
-  curTarget: {fileID: 0}
-  radius: 2
+  deadState: {fileID: 1454116927}
+  knockbackState: {fileID: 1454116935}
+  radius: 25
   fovAngleDeg: 120
   aggroLayerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 55
+  deAggroTimer: 5
   btreeRunner: {fileID: 6729461846227923155}
+  _availableAbilities: []
+--- !u!114 &1969428164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729461846227923156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef5bd92a94c8164ab9ea9e87a5d7b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 6729461846227923153}
+  movementAnimState: {fileID: 1454116926}
 --- !u!1001 &7418616748119233658
 PrefabInstance:
   m_ObjectHideFlags: 0

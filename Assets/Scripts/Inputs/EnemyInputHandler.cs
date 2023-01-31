@@ -7,8 +7,6 @@ namespace Magpie
     public class EnemyInputHandler : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent agent;
-        [SerializeField] private List<Ability> abilities;
-        [SerializeField] private AttackLogic attackLogic;
         [SerializeField] private MovementState movementAnimState;
 
         private void Update()
