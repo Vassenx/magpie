@@ -1,5 +1,5 @@
 using System.Collections;
-using Animancer;
+using TMPro;
 using UnityEngine;
 
 namespace Magpie
@@ -11,6 +11,7 @@ namespace Magpie
         [SerializeField] private GameObject[] vCams = new GameObject[2];
         [SerializeField] private PlayerController2D controller;
         [SerializeField] private DeadState deadAnimState;
+        [SerializeField] private TextMeshPro titleText;
         
         public float turnSpeed = 5;
         public float gravityFallSpeed = 25f;
@@ -22,6 +23,7 @@ namespace Magpie
         {
             StartCoroutine(WaitThenRotate(3));
             lerpT = 0;
+            titleText.enabled = false;
         }
         
         private void RotateToHell()
@@ -75,13 +77,18 @@ namespace Magpie
             yield return new WaitForSeconds(seconds);
             Physics2D.gravity = new Vector2(0, gravityFallSpeed);
             
-            //StartCoroutine(WaitThenAnimate(1));
+            StartCoroutine(WaitThenAnimate(4f));
         }
         
-        /*IEnumerator WaitThenAnimate(float seconds = 4f)
+        IEnumerator WaitThenAnimate(float seconds = 4f)
         {
             yield return new WaitForSeconds(seconds);
             controller.characterStateMachine.ForceSetState(deadAnimState);
-        }*/
+            titleText.enabled = true;
+            // TODO: add intense sound
+            
+            yield return new WaitForSeconds(5f);
+            titleText.enabled = false;
+        }
     }
 }

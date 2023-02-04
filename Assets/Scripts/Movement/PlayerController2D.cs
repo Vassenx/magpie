@@ -58,6 +58,11 @@ namespace Magpie
                 r2d.velocity += _movementInput * speed * Time.fixedDeltaTime;
                 r2d.velocity = Vector3.ClampMagnitude(r2d.velocity, maxSpeed);
             }
+
+            if (_movementInput.sqrMagnitude < 0.1 && !isDashing && isGrounded)
+            {
+                r2d.velocity = Vector3.zero;
+            }
             
             base.FixedUpdate();
         }
