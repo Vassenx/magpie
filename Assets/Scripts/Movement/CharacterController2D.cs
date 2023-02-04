@@ -60,6 +60,8 @@ namespace Magpie
                 transf.RotateAround(transf.position, transf.up, 180f);
                 //transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
+            
+            transform.rotation = Quaternion.identity; // freeze parent rotation!! (agents try to move y rotation on parent)
         }
 
         protected void UpdateIsGrounded()
