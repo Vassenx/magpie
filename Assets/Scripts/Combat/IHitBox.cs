@@ -50,6 +50,14 @@ namespace Magpie
             if (target == null || target == ownerFighter)
                 return false;
 
+            // bitwise pain, check if in the layer mask to ignore
+            var mask = ownerFighter.ignoreLayerMask.value;
+            var layer = target.gameObject.layer;
+            if ((mask & (1<<layer)) != 0)
+            {
+                return false;
+            }
+            
             if (fightersToIgnore != null && fightersToIgnore.Contains(target)) // !target.CanBeHit(ref this)
                 return false;
 

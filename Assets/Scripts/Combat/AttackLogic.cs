@@ -13,31 +13,13 @@ namespace Magpie
         private bool inAttack = false;
         private Ability _prevAttack;
 
-        private LayerMask enemyLayerMask; // TODO not in use, add to hitbox stuff, also its not specific to player
-
-        private ContactFilter2D
-            enemyContactFilter; // TODO not in use, add to hitbox stuff, also its not specific to player
-
         [SerializeField] private AbilityState abilityAnimState;
-
-        private void Start()
-        {
-            enemyLayerMask = LayerMask.NameToLayer("Enemy");
-
-            enemyContactFilter = new ContactFilter2D();
-            enemyContactFilter.SetLayerMask(enemyLayerMask);
-        }
 
         public void OnAttackInput(Ability ability)
         {
             if (!inAttack)
             {
-                _prevAttack = ability; // TODO, below try set state?
-
-                canCombo = true;
-                inAttack = true;
-
-                abilityAnimState.SetAnim(ability.GetAnim());
+                abilityAnimState.SetAnim(ability.GetAnim(), ability);
                 abilityAnimState.OwnerStateMachine.TrySetState(abilityAnimState);
             }
             else
@@ -48,6 +30,14 @@ namespace Magpie
 
         // TODO: stuff below
 
+        public void AttackStart(Ability ability)
+        {
+            _prevAttack = ability;
+
+            canCombo = true;
+            inAttack = true;
+        }
+        
         // ANIMATION EVENT
         public void AttackDone(Ability ability)
         {
@@ -55,8 +45,6 @@ namespace Magpie
             {
                 inAttack = false;
             }
-
-            inAttack = false; // temp, figuring out range combo stuff
         }
 
         // TODO: combo stuff

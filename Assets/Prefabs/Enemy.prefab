@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 463553654}
   - component: {fileID: 463553655}
   - component: {fileID: 1969428165}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Abilities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 1454116926}
   - component: {fileID: 1454116927}
   - component: {fileID: 1454116935}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WaspModel
   m_TagString: HurtBox
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 80573623}
   - component: {fileID: 80573633}
   - component: {fileID: 1969428164}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,11 +596,14 @@ MonoBehaviour:
   sprite: {fileID: 6729461845961531852}
   deadState: {fileID: 1454116927}
   knockbackState: {fileID: 1454116935}
-  radius: 25
-  fovAngleDeg: 120
+  ignoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  radius: 5
+  fovAngleDeg: 150
   aggroLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 119
   deAggroTimer: 5
   btreeRunner: {fileID: 6729461846227923155}
   _availableAbilities: []
@@ -625,6 +628,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6729461846227923159}
     m_Modifications:
+    - target: {fileID: 1760642433745773085, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760642434480256865, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1760642434480256878, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -632,6 +643,14 @@ PrefabInstance:
     - target: {fileID: 1760642434480256878, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760642434873852525, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760642435264133168, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1760642435279999330, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
       propertyPath: m_Pivot.x
@@ -724,6 +743,10 @@ PrefabInstance:
     - target: {fileID: 1760642435279999334, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
       propertyPath: m_Name
       value: HealthBarUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760642435279999334, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}

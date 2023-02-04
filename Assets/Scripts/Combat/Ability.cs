@@ -18,21 +18,18 @@ namespace Magpie
 
         //public float baseDamage;
 
-        protected virtual void Start()
+        protected void Start()
         {
             attackLogic = transform.parent.GetComponent<AttackLogic>();
 
             if (controller != null)
             {
-                flyingAnimClip.Events.OnEnd += SendAbilityEnd;
-                groundAnimClip.Events.OnEnd += SendAbilityEnd;
-
                 flyingAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
                 groundAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
             }
         }
 
-        public virtual AttackTransition GetAnim()
+        public AttackTransition GetAnim()
         {
             if (controller != null)
             {
@@ -41,7 +38,5 @@ namespace Magpie
 
             return null;
         }
-
-        public void SendAbilityEnd() => attackLogic.AttackDone(this);
     }
 }

@@ -20,6 +20,7 @@ namespace Magpie
         private ObjectPooling<HitBox> hitboxPool;
         private Dictionary<HitData, HitBox> activeHits;
         private List<Fighter> fightersToIgnore;
+        public LayerMask ignoreLayerMask;
 
         /************************************************************************************************************************/
 
@@ -29,6 +30,11 @@ namespace Magpie
                 activeHits = new Dictionary<HitData, HitBox>();
 
             hitboxPool = PoolsManager.hitboxPool;
+
+            if (ignoreLayerMask == Decimal.Zero)
+            {
+                ignoreLayerMask = LayerMask.NameToLayer("Enemy");
+            }
         }
 
         public void AddHitBox(HitData data)

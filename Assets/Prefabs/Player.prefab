@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 3966827192605245965}
   - component: {fileID: 3966827192605245960}
   - component: {fileID: 3966827192605245963}
-  - component: {fileID: 3966827192605245954}
   - component: {fileID: 3966827192605245959}
   - component: {fileID: 3966827192605245958}
   - component: {fileID: 3966827192605245955}
   - component: {fileID: 3966827192605245952}
   - component: {fileID: 3966827192605245953}
   - component: {fileID: 3966827192605246206}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -80,23 +79,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.02, y: 0}
   m_Size: {x: 0.5, y: 0.35}
   m_Direction: 1
---- !u!114 &3966827192605245954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966827192605245964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fbccbe7bb9178948818474fbdfc07b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputNames: 000000000100000002000000
-  defaultAbilities:
-  - {fileID: 3966827193754344328}
-  - {fileID: 3966827193266654593}
-  - {fileID: 3966827193266654594}
 --- !u!114 &3966827192605245959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,10 +93,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 3966827192605245955}
   isHittable: 1
+  curTarget: {fileID: 0}
   animator: {fileID: 3966827194621494346}
   sprite: {fileID: 3966827194621494348}
-  curTarget: {fileID: 0}
-  deadState: {fileID: 0}
+  deadState: {fileID: 3966827193266654609}
+  knockbackState: {fileID: 3966827193266654620}
+  ignoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _curMeleeAbility: {fileID: 3966827193754344328}
+  _curRangedAbility: {fileID: 3966827193266654593}
+  _curDashAbility: {fileID: 3966827193266654594}
 --- !u!114 &3966827192605245958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,8 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 3966827192605245953}
-  inputMappings: {fileID: 3966827192605245954}
   playerAttackLogic: {fileID: 3966827192605245958}
+  fighter: {fileID: 3966827192605245959}
   movementAnimState: {fileID: 3966827194621494344}
 --- !u!114 &3966827192605245953
 MonoBehaviour:
@@ -215,7 +204,7 @@ GameObject:
   - component: {fileID: 3966827193754344328}
   - component: {fileID: 3966827193266654593}
   - component: {fileID: 3966827193266654594}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerAbilities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b2f6e7314ff8845ae9ebb89a9871cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: 
+  abilityName: MeleeTemp
   flyingAnimClip:
     _FadeDuration: 0.25
     _Events:
@@ -325,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a376cfdab6748418e4a3b32cc925a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: 
+  abilityName: RangedTemp
   flyingAnimClip:
     _FadeDuration: 0.25
     _Events:
@@ -394,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d48c4476aac8ea4ca99818f44194a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Dash
+  abilityName: DashTemp
   flyingAnimClip:
     _FadeDuration: 0.25
     _Events:
@@ -519,7 +508,8 @@ GameObject:
   - component: {fileID: 3966827194621494342}
   - component: {fileID: 3966827194621494341}
   - component: {fileID: 3966827193266654609}
-  m_Layer: 3
+  - component: {fileID: 3966827193266654620}
+  m_Layer: 6
   m_Name: PlayerModel
   m_TagString: HurtBox
   m_Icon: {fileID: 0}
@@ -792,6 +782,27 @@ MonoBehaviour:
     _Clip: {fileID: 7400000, guid: 06d795cfab73e3d41beaef4296e5e438, type: 2}
     _Speed: 1
     _NormalizedStartTime: NaN
+--- !u!114 &3966827193266654620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966827194621494351}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dbb8b3c54ea9641968e4c523022da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Knockback:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 3293371603fa1b34a87ee4164989a0b0, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
 --- !u!1001 &8478205918949691463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,6 +810,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3966827192605245965}
     m_Modifications:
+    - target: {fileID: 1760642433745773085, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760642434480256865, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1760642434480256878, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -806,6 +825,14 @@ PrefabInstance:
     - target: {fileID: 1760642434480256878, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760642434873852525, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760642435264133168, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1760642435279999330, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
       propertyPath: m_Pivot.x
@@ -898,6 +925,10 @@ PrefabInstance:
     - target: {fileID: 1760642435279999334, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
       propertyPath: m_Name
       value: HealthBarUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760642435279999334, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b889e9aaab3b130428c2b1f049688bbb, type: 3}

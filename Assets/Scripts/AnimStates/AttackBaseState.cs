@@ -12,7 +12,9 @@ namespace Magpie
     {
         protected AttackTransition curAttackAnim;
         protected Fighter fighter;
-
+        protected Ability curAbility;
+        protected AttackLogic attackLogic;
+        
         public override bool CanTurn => false;
         public override bool CanExitState => false;
 
@@ -20,11 +22,13 @@ namespace Magpie
         {
             base.Awake();
             fighter = GetComponentInParent<Fighter>();
+            attackLogic = transform.parent.GetComponent<AttackLogic>();
         }
 
-        public void SetAnim(AttackTransition anim)
+        public void SetAnim(AttackTransition anim, Ability ability)
         {
             curAttackAnim = anim;
+            curAbility = ability;
         }
 
 #if UNITY_EDITOR
@@ -48,12 +52,20 @@ namespace Magpie
             // _CurrentIndex = 0;
             //_Combo = false;
             PlayAnimation();
+
+            attackLogic.AttackStart(curAbility);
         }
 
         public override void OnExitState()
         {
             base.OnExitState();
             fighter.EndHitSequence();
+
+            if (curAbility != null)
+            {
+                attackLogic.AttackDone(curAbility);
+                curAbility = null;
+            }
         }
     }
 }
