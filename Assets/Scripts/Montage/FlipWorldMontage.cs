@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Magpie
 {
@@ -12,6 +14,8 @@ namespace Magpie
         [SerializeField] private PlayerController2D controller;
         [SerializeField] private DeadState deadAnimState;
         [SerializeField] private TextMeshPro titleText;
+
+        [SerializeField] private PolygonCollider2D triggerCollider;
         
         public float turnSpeed = 5;
         public float gravityFallSpeed = 25f;
@@ -21,11 +25,20 @@ namespace Magpie
 
         private void Awake()
         {
-            StartCoroutine(WaitThenRotate(3));
             lerpT = 0;
             titleText.enabled = false;
         }
-        
+
+        // when hit telephone pole
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                playerRb.gameObject.GetComponent<PlayerInputHandler>().ToggleAllInputs(false);
+                StartCoroutine(WaitThenRotate(3));
+            }
+        }
+
         private void RotateToHell()
         {
             //Cursor.visible = false;

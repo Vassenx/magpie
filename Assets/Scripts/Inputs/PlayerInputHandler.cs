@@ -16,6 +16,19 @@ namespace Magpie
 
         [SerializeField] private MovementState movementAnimState;
 
+        public void ToggleAllInputs(bool enable)
+        {
+            PlayerInput input = GetComponent<PlayerInput>();
+            if (enable)
+            {
+                input.actions.Enable();
+            }
+            else
+            {
+                input.actions.Disable();
+            }
+        }
+        
         public void OnMove(InputValue input)
         {
             Vector2 inputVec = input.Get<Vector2>();
