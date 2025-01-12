@@ -37,7 +37,8 @@ namespace Magpie
             // set anim
             if (!Mathf.Approximately(inputVec.x, 0) || !Mathf.Approximately(inputVec.y, 0))
             {
-                movementAnimState.OwnerStateMachine.TrySetState(movementAnimState);
+                if(movementAnimState.OwnerStateMachine.CurrentState != movementAnimState)
+                    movementAnimState.OwnerStateMachine.TrySetState(movementAnimState);
             }
         }
 
@@ -64,5 +65,18 @@ namespace Magpie
                 playerAttackLogic.OnAttackInput(fighter.curDashAbility);
             }
         }
+
     }
+    
+    
+    
+    
+    
+   
+    
+    
+    
+    
+    
+    
 }

@@ -20,24 +20,18 @@ namespace Magpie
 
         [SerializeField] private ClipTransition fly;
         [SerializeField] private ClipTransition fall;
-        private ClipTransition idle;
-
+        [SerializeField] private ClipTransition idleGround;
+        
         // TODO :        public override bool CanEnterState
-
-        protected override void Awake()
-        {
-            base.Awake();
-            idle = GetComponent<IdleState>().Idle;
-        }
 
         private ClipTransition UpdateCurAnimClip()
         {
             if (rb == null)
-                return idle;
+                return GetComponent<IdleState>().Idle;
 
             if (controller.isGrounded)
             {
-                return Mathf.Approximately(rb.velocity.x, 0) ? idle : walk;
+                return Mathf.Approximately(rb.velocity.x, 0) ? idleGround : walk;
             }
             else
             {
@@ -48,10 +42,18 @@ namespace Magpie
 
         public override void OnEnterState()
         {
+            Debug.Log("begin");
+
             base.OnEnterState();
             animancer.Play(CurAnim);
         }
-
+        
+        public override void OnExitState()
+        {
+            Debug.Log("exit");
+            base.OnExitState();
+        }
+        
         private void Update()
         {
             animancer.Play(CurAnim);

@@ -16,6 +16,11 @@ namespace Magpie
             textMesh.enabled = false;
         }
 
+        /*public static T Runner<T>(Func<T> funcToRun)
+        {
+            return funcToRun();
+        }*/
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             if(other.CompareTag("Player"))

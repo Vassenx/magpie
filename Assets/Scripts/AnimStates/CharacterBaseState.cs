@@ -28,12 +28,6 @@ namespace Magpie
         protected override void OnValidate()
         {
             base.OnValidate();
-
-            animancer = GetComponent<AnimancerComponent>();
-
-            rb = transform.parent.GetComponent<Rigidbody2D>();
-            controller = transform.parent.GetComponent<CharacterController2D>();
-
             //gameObject.GetComponentInParentOrChildren(ref _Animancer);
         }
 #endif
@@ -49,14 +43,25 @@ namespace Magpie
         
         protected virtual void Awake()
         {
+            animancer = GetComponent<AnimancerComponent>();
+
+            rb = transform.parent.GetComponent<Rigidbody2D>();
+            controller = transform.parent.GetComponent<CharacterController2D>();
+        }
+        
+        protected virtual void Update()
+        {
+            
         }
 
         public override void OnEnterState()
         {
+            base.OnEnterState();
         }
 
         public override void OnExitState()
         {
+            base.OnExitState();
         }
     }
 }

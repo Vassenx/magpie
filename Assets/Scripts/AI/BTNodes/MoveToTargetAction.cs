@@ -42,7 +42,7 @@ namespace Magpie
 
             // go and face target
             context.agent.destination = blackboard.curTarget.position;
-            context.enemyFighter.FaceTarget();
+            context.controller.FaceTarget(blackboard.curTarget);
             
             return State.Running;
         }

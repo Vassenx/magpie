@@ -11,6 +11,8 @@ namespace Magpie
         {
             base.Awake();
 
+            TakeOff.Events.OnEnd += () =>controller.characterStateMachine.TrySetState(GetComponent<MovementState>());
+            
             controller.OnGroundedChanged += (bool isGrounded) =>
             {
                 if (!isGrounded)

@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6259988053294957584
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 80573633, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 80573633, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: fovAngleDeg
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 463553655, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: flyingAnimClip._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 8cf01a1e5e40de74e88f64178f101d89, type: 2}
+    - target: {fileID: 463553655, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: groundAnimClip._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 8cf01a1e5e40de74e88f64178f101d89, type: 2}
+    - target: {fileID: 1454116926, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: fly._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: dfee147411e1fee43995a0977b1d6184, type: 2}
+    - target: {fileID: 1454116926, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: fall._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: dfee147411e1fee43995a0977b1d6184, type: 2}
+    - target: {fileID: 1454116926, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: walk._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: dfee147411e1fee43995a0977b1d6184, type: 2}
+    - target: {fileID: 1454116927, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: Die._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: e172edf2adad2dd4999514d25e9d3316, type: 2}
+    - target: {fileID: 1454116927, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: DeadLoop._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: c1496e741b4a47c41bf92dc9de8bee7d, type: 2}
+    - target: {fileID: 1454116935, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: Knockback._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 7af15db906d01bd4a98ca8f666ecfce0, type: 2}
+    - target: {fileID: 1969428165, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: flyingAnimClip._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 8cf01a1e5e40de74e88f64178f101d89, type: 2}
+    - target: {fileID: 1969428165, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: groundAnimClip._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 8cf01a1e5e40de74e88f64178f101d89, type: 2}
+    - target: {fileID: 6729461845961531842, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_Name
+      value: SpitterModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461845961531848, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: IdleFly._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: a3b9a92689a5aef46ade5db1c74c7f6d, type: 2}
+    - target: {fileID: 6729461845961531848, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: IdleGround._Clip
+      value: 
+      objectReference: {fileID: 7400000, guid: a3b9a92689a5aef46ade5db1c74c7f6d, type: 2}
+    - target: {fileID: 6729461845961531852, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1613328113, guid: 9d258faca6504f5448aa0e5a03029382, type: 3}
+    - target: {fileID: 6729461846227923156, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_Name
+      value: Spitter_Enemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -46.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923159, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729461846227923167, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122945218529043220, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122945218529043220, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1969428165, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+    - {fileID: 463553655, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 786e893bddfe00c47a4af55bde61736c, type: 3}

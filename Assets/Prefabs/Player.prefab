@@ -159,7 +159,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc48f785aeabc4f44873015321f86ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStateMachine:
+    _CurrentState: {fileID: 0}
+    _DefaultState: {fileID: 0}
   sprite: {fileID: 3966827194621494348}
+  groundColLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   speed: {x: 200, y: 500}
   maxSpeed: 4
 --- !u!114 &3966827192605246206
@@ -509,7 +515,6 @@ GameObject:
   - component: {fileID: 3966827194621494348}
   - component: {fileID: 3966827194621494346}
   - component: {fileID: 3966827194621494347}
-  - component: {fileID: 3966827194621494345}
   - component: {fileID: 3966827194621494340}
   - component: {fileID: 3966827194621494344}
   - component: {fileID: 3966827194621494343}
@@ -517,6 +522,7 @@ GameObject:
   - component: {fileID: 3966827194621494341}
   - component: {fileID: 3966827193266654609}
   - component: {fileID: 3966827193266654620}
+  - component: {fileID: 6960214648360915380}
   m_Layer: 6
   m_Name: PlayerModel
   m_TagString: HurtBox
@@ -625,18 +631,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Animator: {fileID: 3966827194621494346}
   _ActionOnDisable: 0
---- !u!114 &3966827194621494345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966827194621494351}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22e28282464a4e40bdaa423184c5b64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3966827194621494340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +698,15 @@ MonoBehaviour:
       _Callbacks: []
       _Names: []
     _Clip: {fileID: 7400000, guid: c1d78b0fc9baf8845a025fd62a9447cc, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+  idleGround:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 4a879fc6c95ce2b4cab039e872ad0112, type: 2}
     _Speed: 1
     _NormalizedStartTime: NaN
 --- !u!114 &3966827194621494343
@@ -791,6 +794,27 @@ MonoBehaviour:
     _Speed: 1
     _NormalizedStartTime: NaN
 --- !u!114 &3966827193266654620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966827194621494351}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dbb8b3c54ea9641968e4c523022da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Knockback:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 3293371603fa1b34a87ee4164989a0b0, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+--- !u!114 &6960214648360915380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

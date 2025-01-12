@@ -9,14 +9,15 @@ namespace Magpie
     [RequireComponent(typeof(CapsuleCollider2D))]
     public class CharacterController2D : MonoBehaviour
     {
-        public readonly StateMachine<CharacterBaseState>.WithDefault characterStateMachine =
+        public StateMachine<CharacterBaseState>.WithDefault characterStateMachine =
             new StateMachine<CharacterBaseState>.WithDefault();
 
         public Rigidbody2D r2d { get; private set; }
         public NavMeshAgent aiAgent { get; private set; }
         private CapsuleCollider2D mainCollider;
         [SerializeField] private SpriteRenderer sprite;
-
+        [SerializeField] private LayerMask groundColLayerMask;
+        
         public event Action<bool> OnGroundedChanged;
 
         public static readonly float GRAVITY_SCALE = 0.5f; // static for now
@@ -27,6 +28,7 @@ namespace Magpie
         protected virtual void Awake()
         {
             characterStateMachine.DefaultState = GetComponentInChildren<IdleState>();
+            characterStateMachine.InitializeAfterDeserialize();
             r2d = GetComponent<Rigidbody2D>();
             aiAgent = GetComponent<NavMeshAgent>();
             mainCollider = GetComponent<CapsuleCollider2D>();
@@ -43,6 +45,14 @@ namespace Magpie
         {
             UpdateIsGrounded();
             FlipFacing();
+        }
+        
+        public void FaceTarget(Transform curTarget) // TODO: not working
+        {
+            Transform transf = sprite.transform;
+            Vector3 direction = (curTarget.position - transf.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transf.rotation = Quaternion.Slerp(transf.rotation, lookRotation, Time.deltaTime * 5f);
         }
 
         protected virtual void FlipFacing()
@@ -74,13 +84,15 @@ namespace Magpie
             Vector3 groundCheckPos =
                 colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, colliderRadius * 0.9f, 0);
 
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckPos, colliderRadius);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckPos, colliderRadius, groundColLayerMask);
             //Check if any of the overlapping colliders are not player collider, if so, set isGrounded to true
             if (colliders.Length > 0)
             {
                 for (int i = 0; i < colliders.Length; i++)
                 {
-                    if (colliders[i] != mainCollider)
+                    // one-way collisions (platform effector) need "istouching" check
+                    // as OnCollisionEnter2D and overlaps still are triggered when passing thru them
+                    if (colliders[i] != mainCollider && colliders[i].IsTouching(mainCollider))
                     {
                         isGrounded = true;
                         break;

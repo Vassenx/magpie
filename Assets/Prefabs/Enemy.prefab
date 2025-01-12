@@ -152,7 +152,6 @@ GameObject:
   - component: {fileID: 6729461845961531854}
   - component: {fileID: 6729461845961531848}
   - component: {fileID: 117061346}
-  - component: {fileID: 117061352}
   - component: {fileID: 1454116926}
   - component: {fileID: 1454116927}
   - component: {fileID: 1454116935}
@@ -306,18 +305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c0b5007106748498bc4a0de3fc75d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &117061352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6729461845961531842}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22e28282464a4e40bdaa423184c5b64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1454116926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +342,15 @@ MonoBehaviour:
       _Callbacks: []
       _Names: []
     _Clip: {fileID: 7400000, guid: cd4557fab6c8f9943b8aa392e271a02b, type: 2}
+    _Speed: 1
+    _NormalizedStartTime: NaN
+  idleGround:
+    _FadeDuration: 0.25
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 0}
     _Speed: 1
     _NormalizedStartTime: NaN
 --- !u!114 &1454116927
@@ -563,7 +559,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5168ca632727c8a4d8eb45a63571db73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStateMachine:
+    _CurrentState: {fileID: 0}
+    _DefaultState: {fileID: 0}
   sprite: {fileID: 6729461845961531852}
+  groundColLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &80573623
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using Animancer;
+using Unity.VisualScripting;
 
 namespace Magpie
 {
@@ -19,11 +21,6 @@ namespace Magpie
         public override void OnEnterState()
         {
             base.OnEnterState();
-            animancer.Play(Idle);
-        }
-
-        private void Update()
-        {
             animancer.Play(Idle);
         }
     }

@@ -19,8 +19,12 @@ namespace Magpie
         {
             if (!inAttack)
             {
-                abilityAnimState.SetAnim(ability.GetAnim(), ability);
-                abilityAnimState.OwnerStateMachine.TrySetState(abilityAnimState);
+                AttackTransition abilityAnim = ability.GetAnim();
+                if (abilityAnim != null)
+                {
+                    abilityAnimState.SetAnim(abilityAnim, ability);
+                    abilityAnimState.OwnerStateMachine.TrySetState(abilityAnimState);
+                }
             }
             else
             {

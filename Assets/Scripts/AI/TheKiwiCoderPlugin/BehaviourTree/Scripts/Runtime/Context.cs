@@ -19,7 +19,7 @@ namespace TheKiwiCoder {
         public SphereCollider sphereCollider;
         public BoxCollider boxCollider;
         public CapsuleCollider capsuleCollider;
-        public CharacterController characterController;
+        public CharacterController2D controller;
 
         // Add other game specific systems here
         public AIController aiController;
@@ -36,11 +36,11 @@ namespace TheKiwiCoder {
             context.sphereCollider = gameObject.GetComponent<SphereCollider>();
             context.boxCollider = gameObject.GetComponent<BoxCollider>();
             context.capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
-            context.characterController = gameObject.GetComponent<CharacterController>();
             
             // Add whatever else you need here...
             context.aiController = gameObject.GetComponent<AIController>();
             context.enemyFighter = gameObject.GetComponent<EnemyFighter>();
+            context.controller = gameObject.GetComponent<CharacterController2D>();
             
             return context;
         }

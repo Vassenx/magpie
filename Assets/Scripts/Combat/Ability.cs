@@ -24,8 +24,10 @@ namespace Magpie
 
             if (controller != null)
             {
-                flyingAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
-                groundAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
+                if(flyingAnimClip != null)
+                    flyingAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
+                if(groundAnimClip != null)
+                    groundAnimClip.Events.OnEnd += controller.characterStateMachine.ForceSetDefaultState;
             }
         }
 
